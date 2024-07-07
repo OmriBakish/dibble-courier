@@ -1,10 +1,6 @@
 import React, {useState, useEffect, useContext} from 'react';
 import {View, TouchableOpacity, Image, Text, StyleSheet} from 'react-native';
-import {
-  DrawerContentScrollView,
-  DrawerItem,
-  DrawerItemList,
-} from '@react-navigation/drawer';
+import {DrawerContentScrollView, DrawerItem} from '@react-navigation/drawer';
 import DeviceInfo from 'react-native-device-info';
 import {UserContext} from '../../resource/auth/UserContext';
 import {
@@ -22,6 +18,10 @@ import {
 } from '../../resource/BaseValue';
 
 import CloseBtn from '../../src/assets/icons/closeIcon.svg';
+import {COLORS, FONTS, SIZES} from '../../src/constants/theme';
+import getLanguage from '../../resource/LanguageSupport';
+
+let langObj = getLanguage();
 
 const BalanceRow = ({label, value}) => (
   <View style={styles.balanceWrapper}>
@@ -86,7 +86,6 @@ const CustomDrawerContent = props => {
         () => {},
         (isSuccess, responseJson) => {
           if (isSuccess) {
-            console.log('responseJson', responseJson);
             setRevenu(responseJson.total_revenue);
             setTotalSales(responseJson.total_sales);
             setNumOfOrders(responseJson.num_of_orders);
@@ -106,6 +105,13 @@ const CustomDrawerContent = props => {
     setTotalSales('');
     setNumOfOrders('');
     setTotalPayment('');
+  };
+
+  // Map route names to their corresponding Hebrew names
+  const routeNameMap = {
+    DashboardScreenName: 'הזמנות פעילות',
+    OrdersHistoryName: 'היסטוריית הזמנות',
+    CheckInfoScreenName: 'חשבוניות',
   };
 
   return (
@@ -135,7 +141,7 @@ const CustomDrawerContent = props => {
             {name}
           </Text>
         </View>
-        <View style={styles.divider} />
+        <View style={styles.hr} />
         <View style={styles.balanceContainer}>
           <BalanceRow label="סה״כ הזמנות:" value={numOfOrders} />
           <BalanceRow
@@ -151,14 +157,40 @@ const CustomDrawerContent = props => {
             value={revenue ? thousandsFilter(revenue) : 0}
           />
         </View>
-        <View style={styles.divider} />
+        <View style={styles.hr} />
         <View style={styles.drawerItemsContainer}>
-          <DrawerItemList {...props} />
-          <DrawerItem label="תנאי השימוש" onPress={() => setModalOpen(true)} />
-          <DrawerItem label="Support" onPress={openIntercomChat} />
+          {state.routes
+            .filter(
+              route =>
+                route.name !== 'LoginScreenName' &&
+                route.name !== 'SplashScreenName',
+            )
+            .map((route, index) => (
+              <DrawerItem
+                key={route.key}
+                label={routeNameMap[route.name] || route.name}
+                onPress={() => props.navigation.navigate(route.name)}
+                labelStyle={[
+                  styles.drawerItemText,
+                  state.index === index && styles.activeDrawerItemText,
+                ]}
+                style={state.index === index && styles.activeDrawerItem}
+              />
+            ))}
           <DrawerItem
-            label="Logout"
+            label="תנאי השימוש"
+            onPress={() => setModalOpen(true)}
+            labelStyle={styles.drawerItemText}
+          />
+          <DrawerItem
+            label="תמיכה"
+            onPress={openIntercomChat}
+            labelStyle={styles.drawerItemText}
+          />
+          <DrawerItem
+            label="התנתק"
             onPress={() => logout(props, setLoggedIn)}
+            labelStyle={[styles.drawerItemText, {color: COLORS.errorRed}]}
           />
           <Text style={styles.versionText}>
             מספר גירסה: {DeviceInfo.getVersion()}.{DeviceInfo.getBuildNumber()}
@@ -179,8 +211,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   logoAndNameContainer: {
-    paddingHorizontal: 12,
-    paddingVertical: 12,
+    paddingHorizontal: SIZES.space12,
+    paddingVertical: SIZES.space12,
     alignItems: 'center',
   },
   logoImageWrapper: {
@@ -189,27 +221,45 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   logoImageStyle: {height: 120, width: 350},
-  logoPlaceholder: {height: 120, width: 350, backgroundColor: '#f0f0f0'},
+  logoPlaceholder: {
+    height: 120,
+    width: 350,
+    backgroundColor: COLORS.UnclickableGray,
+  },
   companyName: {
-    color: '#46474b',
-    fontSize: 24,
-    fontWeight: '400',
-    textAlign: 'right',
+    ...FONTS.h2,
+    color: COLORS.ParagraphGray,
   },
-  divider: {
+  hr: {
     height: 1,
-    backgroundColor: '#46474b',
-    marginHorizontal: 12,
-    justifyContent: 'center',
-    opacity: 0.2,
+    backgroundColor: COLORS.UnclickableGray30Percent,
+    borderRadius: SIZES.radius,
+    marginHorizontal: SIZES.space12,
   },
-  balanceContainer: {paddingVertical: 4},
+  balanceContainer: {paddingVertical: SIZES.space4},
   balanceWrapper: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignContent: 'center',
-    paddingVertical: 2,
-    paddingHorizontal: 14,
+    paddingVertical: SIZES.space4,
+    paddingHorizontal: SIZES.space12,
+  },
+  balanceText: {
+    ...FONTS.body2,
+  },
+  drawerItemText: {
+    ...FONTS.body2,
+    color: COLORS.primary,
+  },
+  activeDrawerItemText: {
+    color: COLORS.primary,
+  },
+  activeDrawerItem: {
+    backgroundColor: COLORS.headerLightYellow,
+  },
+  versionText: {
+    ...FONTS.body3,
+    textAlign: 'center',
   },
 });
 
