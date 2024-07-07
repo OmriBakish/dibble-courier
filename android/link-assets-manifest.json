@@ -1,0 +1,73 @@
+{
+  "migIndex": 1,
+  "data": [
+    {
+      "path": "src/assets/fonts/AlmoniDLAAA-Black.otf",
+      "sha1": "423df1f7c19b41e45606816162c2ca5556b49954"
+    },
+    {
+      "path": "src/assets/fonts/AlmoniDLAAA-Bold.otf",
+      "sha1": "ee2e738bb5e5b84cd8069b979b1a5a6933006a22"
+    },
+    {
+      "path": "src/assets/fonts/AlmoniDLAAA-Light.otf",
+      "sha1": "95284acc87421bac48bfcd0b9d6e0d21b23c2b34"
+    },
+    {
+      "path": "src/assets/fonts/AlmoniDLAAA.otf",
+      "sha1": "6c579715db073ef3c1a6d7e6d70918567a8cbb03"
+    },
+    {
+      "path": "src/assets/fonts/Helvetica Neu Bold.ttf",
+      "sha1": "4df1c65ace6cb5dfa38ef3f2b59e89ab6d08ada8"
+    },
+    {
+      "path": "src/assets/fonts/HelveticaNeue BlackCond.ttf",
+      "sha1": "c36dcde33cd0b0f2e2452e09b8b388a2b859088f"
+    },
+    {
+      "path": "src/assets/fonts/HelveticaNeue Light.ttf",
+      "sha1": "14236487c484725caf35ed434068fca8ab7e750f"
+    },
+    {
+      "path": "src/assets/fonts/HelveticaNeue Medium.ttf",
+      "sha1": "5b235bd8ab01aa99e3a2a66daea10350a9d254ed"
+    },
+    {
+      "path": "src/assets/fonts/HelveticaNeue Thin.ttf",
+      "sha1": "3b7687a56fb5075685e517efbd68881dc54922bb"
+    },
+    {
+      "path": "src/assets/fonts/HelveticaNeue.ttf",
+      "sha1": "d82ba04b7438da9836d701bbf704600d77b466c0"
+    },
+    {
+      "path": "src/assets/fonts/HelveticaNeueBd.ttf",
+      "sha1": "adebb8ccc9485184247433bcc74ee62186d9f34e"
+    },
+    {
+      "path": "src/assets/fonts/HelveticaNeueHv.ttf",
+      "sha1": "0c828a7876acbabf4471a32182dfb13e1b357977"
+    },
+    {
+      "path": "src/assets/fonts/HelveticaNeueIt.ttf",
+      "sha1": "23e3aa33dac5cc1721c5a651d5d106e80c03ef00"
+    },
+    {
+      "path": "src/assets/fonts/HelveticaNeueLt.ttf",
+      "sha1": "ac8d8510e43277a5bebd1f7bc0cf05c36bc6334c"
+    },
+    {
+      "path": "src/assets/fonts/HelveticaNeueMed.ttf",
+      "sha1": "012639f9a4ed9f209ee31d2adc81734e941f64f3"
+    },
+    {
+      "path": "src/assets/fonts/OscarFM-Regular.otf",
+      "sha1": "fdb21aba440fbf6bba1a58c0b6fa144113d54ba4"
+    },
+    {
+      "path": "src/assets/fonts/OscarFM.otf",
+      "sha1": "fdb21aba440fbf6bba1a58c0b6fa144113d54ba4"
+    }
+  ]
+}

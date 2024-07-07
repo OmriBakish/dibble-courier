@@ -1,0 +1,42 @@
+
+ 
+ @mixin generate_font(
+    $font_family,
+    $attr-count: 10,
+    $attr-steps: 10,
+    $unit: "%"
+  ) {
+    $attr-list: null;
+    @for $i from 1 through $attr-count {
+      $attr-value: $attr-steps * $i;
+  
+      .#{$font_family}_#{$attr-value} {
+        font-size: #{$attr-value}#{$unit};
+      }
+  
+      $attr-list: append(
+        $attr-list,
+        unquote(".#{$font_family}_#{$attr-value}"),
+        comma
+      );
+    }
+    #{$attr-list} {
+      font-family: $font_family;
+      letter-spacing: -0.8px;
+      color: #4d4f5c;
+      text-align: left;
+   
+  
+    }
+  }
+ @include generate_font("AlmoniDLAAA", 20, 5,"px");
+
+ @include generate_font("AlmoniDLAAA-Bold", 20, 5,"px");
+ @keyframes example {
+  from {background-color: red !important;}
+  to {background-color: yellow;}
+}
+.animatedBg{
+  animation-name: example;
+  animation-duration: 4s;
+}
