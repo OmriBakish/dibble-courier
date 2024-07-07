@@ -1,34 +1,32 @@
-import React, {Component, useEffect, useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {
   View,
   Text,
   StyleSheet,
   TouchableOpacity,
   ImageBackground,
-  Image,
 } from 'react-native';
-import {getPerfectSize} from '../../resource/LanguageSupport';
 import {
-  bg_white,
-  c_orange,
-  c_text_white,
   greyHasOpacity,
   key_user_info,
   rq_get_revenue,
   sub_key_business_name,
   sub_key_token,
 } from '../../resource/BaseValue';
-import {globalStyles} from '../../resource/style/global';
 import getLanguage from '../../resource/LanguageSupport';
 
-import profile from '../../image/Person.png';
 import bg from '../../image/d_coin_bg.png';
-import close_btn from '../../src/assets/icons/close_btn.png';
+
+import CloseBtn from '../../src/assets/icons/closeIcon.svg';
+import PersonIcon from '../../src/assets/icons/person.svg';
+
 import {
   getDataWithSubKey,
   makeAPostRequest,
 } from '../../resource/SupportFunction';
 import moment from 'moment/moment';
+import {COLORS, FONTS, SHADOWS, SIZES} from '../../src/constants/theme';
+import CustomButton from '../CustomButton/CustomButton';
 
 let langObj = getLanguage();
 let today = moment().clone().format('YYYY-MM-DD');
@@ -164,10 +162,10 @@ const GetPaidModal = ({handleShowGetPaidModal, play_success_animation}) => {
             zIndex: 99,
           }}
           onPress={() => handleShowGetPaidModal(false)}>
-          <Image source={close_btn} style={{width: 20}} resizeMode="contain" />
+          <CloseBtn width={20} height={20} />
         </TouchableOpacity>
         <View style={styles.content}>
-          <Image source={profile} style={styles.profile} resizeMode="contain" />
+          <PersonIcon width={100} height={120} />
           <Text style={styles.title}>בקשה להקדמת תשלום</Text>
           <Text style={styles.subTitle}>
             יתרה זמינה למשיכה: {formatNumber(balance)}{' '}
@@ -198,19 +196,14 @@ const GetPaidModal = ({handleShowGetPaidModal, play_success_animation}) => {
           <Text style={styles.subTitle}>
             סה״כ לקבלה: {formatNumber(balanceToReceive)}{' '}
           </Text>
-          <TouchableOpacity
-            style={[
-              styles.orderReadyButtonContainer,
-              {
-                backgroundColor: selectedIndex === null ? '#BDBCBC' : '#FFCA1A',
-              },
-            ]}
-            disabled={selectedIndex === null}
-            onPress={() => handleSendForm()}>
-            <Text style={[globalStyles.textGeneral, {color: c_text_white}]}>
-              {selectedIndex === null ? langObj.chooseOption : langObj.continue}
-            </Text>
-          </TouchableOpacity>
+          <CustomButton
+            text={
+              selectedIndex === null ? langObj.chooseOption : langObj.continue
+            }
+            inputValidation={selectedIndex === null ? false : true}
+            onPress={() => handleSendForm()}
+            style={{marginTop: SIZES.space24}}
+          />
         </View>
       </ImageBackground>
     </View>
@@ -231,68 +224,46 @@ const styles = StyleSheet.create({
   },
   background: {
     width: '100%',
-    backgroundColor: bg_white,
-    borderRadius: 10,
+    backgroundColor: COLORS.white,
+    borderRadius: SIZES.radius,
     overflow: 'hidden',
+    ...SHADOWS.cardsAndButtons,
   },
   content: {
-    padding: 20,
+    padding: SIZES.space24,
     alignItems: 'center',
   },
-  profile: {
-    width: 100,
-    height: 120,
-    marginVertical: 15,
-  },
   title: {
-    fontFamily: 'OscarFM-Regular',
-    fontSize: 30,
-    letterSpacing: -1,
-    color: '#707070',
-    marginBottom: 5,
-    backgroundColor: c_text_white,
+    ...FONTS.h1,
+    color: COLORS.ParagraphGray,
+    marginBottom: SIZES.space4,
+    backgroundColor: COLORS.white,
   },
   subTitle: {
-    fontFamily: 'AlmoniDLAAA',
-    fontSize: 25,
-    letterSpacing: -0.6,
-    color: '#000',
-    marginBottom: 5,
+    ...FONTS.body1,
+    marginBottom: SIZES.space4,
   },
   toggleContainer: {
     display: 'flex',
     flexDirection: 'row',
-    marginVertical: 15,
+    marginVertical: SIZES.space16,
   },
   toggle: {
     display: 'flex',
-    backgroundColor: '#f8f8f8',
+    backgroundColor: COLORS.background,
     justifyContent: 'center',
     alignItems: 'center',
     width: 200,
     height: 60,
     borderWidth: 3,
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 3.84,
-    elevation: 5,
+    ...SHADOWS.button,
   },
   ToggleTitle: {
-    fontFamily: 'AlmoniDLAAA',
-    fontSize: 20,
-    letterSpacing: -1,
-    color: '#000',
-    fontWeight: '600',
+    ...FONTS.body1,
+    ...FONTS.fontBold,
   },
   TogglePercentage: {
-    fontFamily: 'AlmoniDLAAA',
-    fontSize: 35,
-    letterSpacing: -1,
-    color: '#000',
+    ...FONTS.body1,
   },
   orderReadyButtonContainer: {
     marginTop: 30,
@@ -300,9 +271,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     height: 50,
     width: 300,
-    borderRadius: 4,
-    color: '#ffffff',
-    // backgroundColor: '#FFCA1A',
+    borderRadius: SIZES.radius,
+    color: COLORS.white,
   },
 });
 

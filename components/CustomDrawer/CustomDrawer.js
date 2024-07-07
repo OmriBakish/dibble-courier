@@ -20,7 +20,8 @@ import {
   sub_key_business_name,
   sub_key_logo,
 } from '../../resource/BaseValue';
-import {icons} from '../../src/assets/constants';
+
+import CloseBtn from '../../src/assets/icons/closeIcon.svg';
 
 const BalanceRow = ({label, value}) => (
   <View style={styles.balanceWrapper}>
@@ -116,7 +117,7 @@ const CustomDrawerContent = props => {
         <TouchableOpacity
           style={styles.drawerXStyle}
           onPress={() => props.navigation.closeDrawer()}>
-          <Image style={styles.closeIconStyle} src={icons.close_btn} />
+          <CloseBtn width={20} height={20} />
         </TouchableOpacity>
         <View style={styles.logoAndNameContainer}>
           <View style={styles.logoImageWrapper}>
@@ -177,7 +178,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  closeIconStyle: {height: 20, width: 20},
   logoAndNameContainer: {
     paddingHorizontal: 12,
     paddingVertical: 12,
