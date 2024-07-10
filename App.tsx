@@ -64,8 +64,6 @@ const MainApp = React.memo(({setModalVisible}) => {
           component={DashBoardScreen}
           options={{
             headerShown: false,
-            drawerHideStatusBarOnOpen: true,
-            drawerStatusBarAnimation: 'fade',
           }}
         />
         <Drawer.Screen
@@ -73,7 +71,6 @@ const MainApp = React.memo(({setModalVisible}) => {
           component={ScreenOrderHistory}
           options={{
             headerShown: false,
-            drawerHideStatusBarOnOpen: true,
           }}
           initialParams={{refresh: true}}
         />
@@ -82,7 +79,6 @@ const MainApp = React.memo(({setModalVisible}) => {
           component={ScreenInvoice}
           options={{
             headerShown: false,
-            drawerHideStatusBarOnOpen: true,
           }}
           initialParams={{refresh: true}}
         />
@@ -91,7 +87,6 @@ const MainApp = React.memo(({setModalVisible}) => {
           component={LoginScreen}
           options={{
             headerShown: false,
-            drawerHideStatusBarOnOpen: true,
           }}
         />
         <Drawer.Screen
@@ -99,7 +94,6 @@ const MainApp = React.memo(({setModalVisible}) => {
           component={SplashScreen}
           options={{
             headerShown: false,
-            drawerHideStatusBarOnOpen: true,
           }}
         />
       </Drawer.Navigator>

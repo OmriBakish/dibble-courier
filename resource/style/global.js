@@ -1,7 +1,8 @@
 import {StyleSheet, I18nManager} from 'react-native';
-import {perfectSize} from '../../components/DibbleHeader/style';
 import {getPerfectSize} from '../LanguageSupport';
- export const globalStyles = StyleSheet.create({
+let perfectSize = getPerfectSize();
+
+export const globalStyles = StyleSheet.create({
   textHeader: {
     fontFamily: 'Oscar FM',
     fontSize: 92,

@@ -122,6 +122,7 @@ export default function ScreenOrderHistory(props) {
     Animated.timing(flipDateAnim, {
       toValue: isDateOpened ? 0 : 3.14,
       duration: 500,
+      useNativeDriver: false,
     }).start();
   };
 
@@ -130,6 +131,7 @@ export default function ScreenOrderHistory(props) {
     Animated.timing(flipStatusAnim, {
       toValue: isSelectionOpened ? 0 : 3.14,
       duration: 500,
+      useNativeDriver: false,
     }).start();
   };
   const LottieRef = useRef(null);
@@ -174,6 +176,7 @@ export default function ScreenOrderHistory(props) {
     Animated.timing(successAnimation, {
       toValue: 1,
       duration: 2000,
+      useNativeDriver: false,
     }).start(() => {
       setAnimationSuccessPlay(false);
     });

@@ -13,7 +13,7 @@ export default class Card extends React.Component {
     this._getMinValue = this._getMinValue.bind(this);
   }
 
-  _initContentHeight = (evt) => {
+  _initContentHeight = evt => {
     if (this.state.contentHeight > 0) return;
     console.log('contentHeight', evt.nativeEvent.layout.height);
     this.setState({contentHeight: evt.nativeEvent.layout.height});
@@ -46,6 +46,7 @@ export default class Card extends React.Component {
             ? this._getMaxValue()
             : this._getMinValue(),
           duration: 300,
+          useNativeDriver: false,
         }).start();
       },
     );

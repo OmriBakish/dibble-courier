@@ -1,4 +1,4 @@
-import React, {useState, useMemo} from 'react';
+import React, {useState} from 'react';
 import {
   FlatList,
   Image,
@@ -9,9 +9,7 @@ import {
   TouchableOpacity,
   StyleSheet,
 } from 'react-native';
-import moment from 'moment';
 import Product_Item from '../ProductCard/ProductCard';
-import {globalStyles} from '../../resource/style/global';
 import {
   getItemLogoSource,
   getTotalItems,
@@ -25,122 +23,115 @@ import CustomButton from '../CustomButton/CustomButton';
 let langObj = getLanguage();
 
 const DisplayAcceptBid = React.memo(
-  ({item, index, setBidOrderReady, showModalBox}) => {
+  ({
+    item,
+    index,
+    setBidOrderReady,
+    showModalBox,
+    onMainBtnPress,
+    onSecondBtnPress,
+    incomingOrders = false,
+  }) => {
     const [clicked, setClicked] = useState(false);
-    const [showWarning, setShowWarning] = useState(item.forceShowWarning);
 
-    const handlePrepareOrder = () => setShowWarning(false);
     const handleReadyForShipment = () => {
       setClicked(true);
       setBidOrderReady(item.bid_id, setClicked);
     };
+
     const handleWatchList = () => showModalBox(item, 3);
     const hasIllustratedProduct = item?.products?.some(
       product => product.is_illustrated,
     );
 
-    if (showWarning) {
-      return (
-        <View style={styles.orderCardContainer}>
-          <Text style={globalStyles.textOscarFmRegular_50}>
-            {langObj.timeLeftToCollect_1}
-          </Text>
-          <Text style={[globalStyles.textOscarFmRegular_50, styles.orangeText]}>
-            {moment.utc(item.ready_time).local().format('DD.MM.YY, HH:mm')}
-          </Text>
-          <Text
-            style={[globalStyles.textOscarFmRegular_50, styles.marginTop10]}>
-            {langObj.timeLeftToCollect_2}
-          </Text>
-          <TouchableOpacity
-            onPress={handlePrepareOrder}
-            style={styles.padding10}>
-            <Text style={globalStyles.textAlmoniDLAAA_30}>
-              {langObj.startPreparingOrder}
+    return (
+      <View style={styles.orderCardContainerOption2}>
+        <View style={styles.orderCardHeaderContainer}>
+          <View style={styles.orderCardTitleContainer}>
+            <View style={styles.rowAlignCenter}>
+              <Text style={styles.orderIdTitle}>{langObj.orderID}</Text>
+              <Text style={styles.orderIdItems}>{item.order_id}</Text>
+            </View>
+
+            <Text style={styles.orderTotalItems}>
+              {langObj.totalItems}: {getTotalItems(item)}
             </Text>
-          </TouchableOpacity>
-        </View>
-      );
-    } else {
-      return (
-        <View style={styles.orderCardContainerOption2}>
-          <View style={styles.orderCardHeaderContainer}>
-            <View style={styles.orderCardTitleContainer}>
-              <View style={styles.rowAlignCenter}>
-                <Text style={styles.orderIdTitle}>{langObj.orderID}</Text>
-                <Text style={styles.orderIdItems}>{item.order_id}</Text>
-              </View>
 
-              <Text style={styles.orderTotalItems}>
-                {langObj.totalItems}: {getTotalItems(item)}
-              </Text>
-
-              <Text style={styles.orderTotalItems}>
-                {langObj.totalCost}: {getTotalPrice(item)}
-                <Text style={{...FONTS.body4}}> {langObj.nis}</Text>{' '}
-              </Text>
-            </View>
-
-            <View style={styles.columnAlignCenter}>
-              <Image
-                source={getItemLogoSource(item)}
-                resizeMode="contain"
-                style={styles.orderCardLogoImageStyle}
-              />
-              <Text style={styles.orderCardOrderTypeTextStyle}>
-                {langObj.order_type[item.order_type]}
-              </Text>
-            </View>
+            <Text style={styles.orderTotalItems}>
+              {langObj.totalCost}: {getTotalPrice(item)}
+              <Text style={{...FONTS.body4}}> {langObj.nis}</Text>{' '}
+            </Text>
           </View>
-          {item.products && (
-            <View>
-              <FlatList
-                data={item.products}
-                renderItem={({item: product, index: productIndex}) => {
-                  const isLastItem = productIndex === item.products.length - 1;
-                  return (
-                    <>
-                      <Product_Item item={product} />
-                      {!isLastItem && <View style={styles.hr} />}
-                    </>
-                  );
-                }}
-                keyExtractor={product => product.product_id + item.order_id}
-                style={styles.orderProductListStyle}
-                showsVerticalScrollIndicator={false}
-              />
-              {hasIllustratedProduct ? (
-                <View style={styles.isIllustratedContainer}>
-                  <View style={styles.isIllustrated}></View>
-                  <Text style={{...FONTS.body2}}>{langObj.onlyIllustrate}</Text>
-                </View>
-              ) : null}
-            </View>
-          )}
-          {item.notes && (
-            <View style={styles.orderNotesContainer}>
-              <Text style={styles.orderNotesTitle}>{langObj.orderComment}</Text>
-              <ScrollView style={styles.notesContainer}>
-                <Text style={styles.userNotes}>{item.notes}</Text>
-              </ScrollView>
-            </View>
-          )}
-          {clicked ? (
-            <ActivityIndicator size="large" color={COLORS.dibbleYellow} />
-          ) : (
-            <CustomButton
-              text={langObj.readyForShipment}
-              onPress={handleReadyForShipment}
+
+          <View style={styles.columnAlignCenter}>
+            <Image
+              source={getItemLogoSource(item)}
+              resizeMode="contain"
+              style={styles.orderCardLogoImageStyle}
             />
-          )}
-          <TouchableOpacity
-            style={styles.secondaryBtn}
-            onPress={handleWatchList}>
-            <Text style={styles.secondaryBtnText}>{langObj.watchList}</Text>
-          </TouchableOpacity>
+            <Text style={styles.orderCardOrderTypeTextStyle}>
+              {langObj.order_type[item.order_type]}
+            </Text>
+          </View>
         </View>
-      );
-    }
+        {item.products && (
+          <View>
+            <FlatList
+              data={item.products}
+              renderItem={({item: product, index: productIndex}) => {
+                const isLastItem = productIndex === item.products.length - 1;
+                return (
+                  <>
+                    <Product_Item item={product} />
+                    {!isLastItem && <View style={styles.hr} />}
+                  </>
+                );
+              }}
+              keyExtractor={product => product.product_id + item.order_id}
+              style={styles.orderProductListStyle}
+              showsVerticalScrollIndicator={false}
+            />
+            {hasIllustratedProduct ? (
+              <View style={styles.isIllustratedContainer}>
+                <View style={styles.isIllustrated}></View>
+                <Text style={{...FONTS.body2}}>{langObj.onlyIllustrate}</Text>
+              </View>
+            ) : null}
+          </View>
+        )}
+        {item.notes && (
+          <View style={styles.orderNotesContainer}>
+            <Text style={styles.orderNotesTitle}>{langObj.orderComment}</Text>
+            <ScrollView style={styles.notesContainer}>
+              <Text style={styles.userNotes}>{item.notes}</Text>
+            </ScrollView>
+          </View>
+        )}
+        {clicked ? (
+          <ActivityIndicator size="large" color={COLORS.dibbleYellow} />
+        ) : (
+          <CustomButton
+            text={
+              incomingOrders ? langObj.submitABid : langObj.readyForShipment
+            }
+            onPress={
+              incomingOrders
+                ? () => onMainBtnPress()
+                : () => handleReadyForShipment()
+            }
+          />
+        )}
+        <TouchableOpacity
+          style={styles.secondaryBtn}
+          onPress={
+            incomingOrders ? () => onSecondBtnPress() : () => handleWatchList()
+          }>
+          <Text style={styles.secondaryBtnText}>
+            {incomingOrders ? langObj.reject : langObj.watchList}
+          </Text>
+        </TouchableOpacity>
+      </View>
+    );
   },
 );
 
@@ -177,6 +168,7 @@ const styles = StyleSheet.create({
     backgroundColor: COLORS.white,
     padding: SIZES.space8,
     borderRadius: SIZES.radius,
+    marginBottom: SIZES.space8,
     ...SHADOWS.cardsAndButtons,
   },
   orderCardHeaderContainer: {

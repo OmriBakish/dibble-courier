@@ -9,10 +9,10 @@ import {
   ActivityIndicator,
   Image,
 } from 'react-native';
-import getLanguage from '../../resource/LanguageSupport';
-import {perfectSize} from '../DibbleHeader/style';
- import {globalStyles} from '../../resource/style/global';
- 
+import getLanguage, {getPerfectSize} from '../../resource/LanguageSupport';
+
+import {globalStyles} from '../../resource/style/global';
+
 import {
   modal_select_product,
   greyHasOpacity,
@@ -22,11 +22,11 @@ import {SubmitBidHeader} from '../../screens/submitBidHeader';
 import {renderProduct} from '../../screens/ScreenPickup';
 import {
   get_order_products_diff,
-  merge_amount_update,
   merge_amount_update_with_bid,
   callPlaceBid,
 } from '../../resource/SupportFunction';
 let langObj = getLanguage();
+let perfectSize = getPerfectSize();
 
 export default function screenOrderChange({orderObject, ...props}) {
   let [indicatorSizeW, setIndicatorSizeW] = React.useState(0);
@@ -143,8 +143,7 @@ export default function screenOrderChange({orderObject, ...props}) {
                         removed_products.length ? perfectSize(800) : 0,
                         true,
                       )}
-                       keyExtractor={(item) => item.product_id + item.option}
- 
+                      keyExtractor={item => item.product_id + item.option}
                     />
                     {!endReachedAdded ? (
                       <Text
@@ -180,7 +179,7 @@ export default function screenOrderChange({orderObject, ...props}) {
                     <FlatList
                       onEndReached={() => setEndReachedRemoved(true)}
                       onEndReachedThreshold={0.2}
-                      data={removed_products.map((p) => {
+                      data={removed_products.map(p => {
                         return {...p, removed: true};
                       })}
                       renderItem={renderProduct(
@@ -189,8 +188,7 @@ export default function screenOrderChange({orderObject, ...props}) {
                           : 0,
                         true,
                       )}
-                       keyExtractor={(item) => item.product_id + item.option}
- 
+                      keyExtractor={item => item.product_id + item.option}
                     />
                     {!endReachedRemoved ? (
                       <Text
@@ -206,7 +204,7 @@ export default function screenOrderChange({orderObject, ...props}) {
                 </View>
               ) : null}
             </View>
- 
+
             <TouchableOpacity
               disabled={!(endReachedAdded && endReachedRemoved)}
               onPress={() => {
@@ -214,7 +212,7 @@ export default function screenOrderChange({orderObject, ...props}) {
                   callPlaceBid(
                     merge_amount_update_with_bid(
                       orderObject.products,
-                      [...amount_change_products].map((p) => {
+                      [...amount_change_products].map(p => {
                         return {...p, isSelected: true};
                       }),
                       orderObject.bidded_products,
@@ -322,7 +320,6 @@ export default function screenOrderChange({orderObject, ...props}) {
             </TouchableOpacity>
 
      </TouchableOpacity>:null} */}
-         
           </View>
         </View>
       )}
@@ -422,7 +419,7 @@ const mStyle = StyleSheet.create({
     width: perfectSize(50.6),
     height: perfectSize(38.6),
   },
- 
+
   lackOfProductBtn: {
     fontFamily: 'AlmoniDLAAA',
     fontSize: perfectSize(60),
@@ -431,4 +428,4 @@ const mStyle = StyleSheet.create({
     textAlign: 'center',
     color: '#ff0000',
   },
- });
+});

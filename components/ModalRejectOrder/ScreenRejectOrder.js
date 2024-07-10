@@ -10,7 +10,7 @@ import {
   TextInput,
   Image,
 } from 'react-native';
-import {perfectSize} from '../DibbleHeader/style';
+import {getPerfectSize} from '../../resource/LanguageSupport';
 import {screenRejectOrderStyle} from './style';
 import {Keyboard} from 'react-native';
 import {
@@ -25,6 +25,7 @@ import {
   greyHasOpacity,
 } from '../../resource/BaseValue';
 
+let perfectSize = getPerfectSize();
 function renderOptionCard(option, index, setChosenOption) {
   return (
     <TouchableOpacity
@@ -97,7 +98,7 @@ export default function ScreenRejectOrder(props) {
 
   let submitRejection = () => {
     let orderId = props.order_id;
-    getDataWithSubKey(key_user_info, sub_key_token, (token) => {
+    getDataWithSubKey(key_user_info, sub_key_token, token => {
       let dataObj = {
         request: rq_reject_order,
         token: token,
@@ -336,7 +337,7 @@ export default function ScreenRejectOrder(props) {
                 renderItem={({item, index}) =>
                   renderOptionCard(item, index, setChosenOption)
                 }
-                keyExtractor={(item) => item.text}
+                keyExtractor={item => item.text}
               />
             </View>
           </View>
@@ -399,7 +400,7 @@ export default function ScreenRejectOrder(props) {
                 fontSize: perfectSize(40),
                 borderColor: '#707070',
               }}
-              onChangeText={(text) => onChangeText(text)}>
+              onChangeText={text => onChangeText(text)}>
               {' '}
             </TextInput>
 

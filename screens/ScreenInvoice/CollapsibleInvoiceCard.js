@@ -52,6 +52,7 @@ function CollapsibleOrderCard(props) {
     Animated.timing(flipAnim, {
       toValue: isCollapsed ? 0 : 3.14,
       duration: 500,
+      useNativeDriver: false,
     }).start();
   };
 
