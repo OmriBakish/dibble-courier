@@ -10,6 +10,7 @@ import {
   greyHasOpacity,
 } from '../../resource/BaseValue';
 import {getPerfectSize} from '../../resource/LanguageSupport';
+import {COLORS, SIZES} from '../../src/constants/theme';
 let perfectSize = getPerfectSize();
 const screenWidth = Math.round(Dimensions.get('window').width);
 const screenHeight = Math.round(Dimensions.get('window').height);
@@ -196,7 +197,8 @@ export const mStyle = StyleSheet.create({
     flexDirection: 'column',
     alignItems: 'flex-start',
     justifyContent: 'space-between',
-    backgroundColor: bg_white,
+    backgroundColor: COLORS.background,
+    paddingHorizontal: SIZES.space12,
   },
   noNetworkMessageTextStyle: {
     position: 'absolute',
@@ -207,33 +209,23 @@ export const mStyle = StyleSheet.create({
     fontSize: perfectSize(100),
   },
   orderBarsContainerStyle: {
-    marginTop: perfectSize(220),
     flex: 1,
-    width: screenWidth,
     flexDirection: 'row',
-    alignItems: 'flex-start',
-    paddingBottom: 10,
-    backgroundColor: bg_white,
+    columnGap: SIZES.space8,
   },
   modalMainContainerStyle: {
     justifyContent: 'center',
-     position: 'absolute',
+    position: 'absolute',
     height: screenHeight,
     backgroundColor: greyHasOpacity,
     width: screenWidth,
 
- 
     alignItems: 'center',
   },
   mainTitleAndClockContainer: {
-    position: 'absolute',
-    top: perfectSize(69),
-    right: 0,
-    left: 0,
-    marginLeft: 'auto',
-    marginRight: 'auto',
-    flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center',
+    flexDirection: 'column',
+    flex: 1,
   },
 });

@@ -3,9 +3,7 @@ import {
   bg_dark,
   bg_incomingOrder,
   bg_underline,
-  bg_white,
   c_orange,
-  c_text_blue,
 } from '../../resource/BaseValue';
 import {getPerfectSize} from '../../resource/LanguageSupport';
 let perfectSize = getPerfectSize();
@@ -14,14 +12,13 @@ export const approvedOrderBarStyle = StyleSheet.create({
     flexDirection: 'column',
     flex: 1,
     alignSelf: 'stretch',
-    margin: 10,
+
     padding: 10,
   },
   columnBarContainer: {
     flex: 1,
     flexDirection: 'column',
     alignItems: 'flex-start',
-    margin: 10,
   },
   barHeaderContainer: {
     flexDirection: 'row',
@@ -74,10 +71,10 @@ export const approvedOrderBarStyle = StyleSheet.create({
   },
   userNotes: {
     fontFamily: 'AlmoniDLAAA',
-     fontSize: perfectSize(40),
+    fontSize: perfectSize(40),
     letterSpacing: -0.6,
     color: 'red',
- 
+
     padding: 10,
     backgroundColor: 'rgba(237,237,237,0.5)',
     borderRadius: 10,
@@ -146,8 +143,8 @@ export const approvedOrderBarStyle = StyleSheet.create({
   orderNotesContainer: {
     fontFamily: 'AlmoniDLAAA',
     fontSize: 15,
-     alignSelf: 'flex-start',
- 
+    alignSelf: 'flex-start',
+
     letterSpacing: -0.5,
     color: 'rgb(209,210,212)',
     paddingBottom: 5,
@@ -156,12 +153,11 @@ export const approvedOrderBarStyle = StyleSheet.create({
     alignSelf: 'stretch',
     alignItems: 'center',
     justifyContent: 'center',
-   paddingVertical:perfectSize(20),
-   marginHorizontal:perfectSize(20),
-   marginVertical:perfectSize(10),
+    paddingVertical: perfectSize(20),
+    marginHorizontal: perfectSize(20),
+    marginVertical: perfectSize(10),
     borderRadius: 10,
     color: '#ffffff',
     backgroundColor: bg_dark,
- 
   },
 });

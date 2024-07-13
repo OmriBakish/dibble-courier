@@ -33,7 +33,7 @@ function CollapsibleCard({
   children,
   Header,
   contentHeight,
-  defaultCollapsed,
+  defaultCollapsed = true,
   style,
   title,
   useBezier,
@@ -45,7 +45,7 @@ function CollapsibleCard({
       <TouchableOpacity
         onPress={() => {
           onChangeStatus(option);
-          props.set_is_opened((c) => !c);
+          props.set_is_opened(c => !c);
         }}>
         <View
           style={{
@@ -85,8 +85,7 @@ function CollapsibleCard({
       duration: 300,
       useNativeDriver: false, // <-- Add this
     }).start();
-     toggleAnimation();
- 
+    toggleAnimation();
   }, [props.is_opened]);
 
   return (
@@ -95,7 +94,7 @@ function CollapsibleCard({
       <TouchableOpacity
         activeOpacity={1}
         onPress={() => {
-          props.set_is_opened((c) => !c);
+          props.set_is_opened(c => !c);
         }}
         style={styles.cardTop}>
         {Header}
@@ -126,7 +125,7 @@ function CollapsibleCard({
           renderItem={({item, index}) =>
             render_option(item, props.onChangeStatus, props.status, index)
           }
-          keyExtractor={(item) => item.product_id}
+          keyExtractor={item => item.product_id}
         />
       </Animated.View>
     </View>

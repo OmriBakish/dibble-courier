@@ -18,6 +18,7 @@ export default function ResponseAnimation({
       Animated.timing(progress, {
         toValue: 1,
         duration: 1000,
+        useNativeDriver: false,
       }).start(() => {
         progress.setValue(0);
 

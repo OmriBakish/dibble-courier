@@ -45,12 +45,11 @@ export default function ScreenInvoice(props) {
   let [invoices, setInvoices] = React.useState([]);
   const [vat, setVat] = useState(1);
   const [loadingPage, setLoadingPage] = React.useState(false);
-  const isFocused = useIsFocused()
- 
+  const isFocused = useIsFocused();
 
   React.useEffect(() => {
     setLoadingPage(true);
-    getDataWithSubKey(key_user_info, sub_key_token, (token) => {
+    getDataWithSubKey(key_user_info, sub_key_token, token => {
       makeAPostRequest(
         {request: rq_supplier_get_invoice_summary, token: token},
         () => {},
@@ -62,13 +61,10 @@ export default function ScreenInvoice(props) {
 
           if (isSuccess) {
             // alert(JSON.stringify(response));
-            if (response.summaries.length&&response.summaries[0]==null){
-              
+            if (response.summaries.length && response.summaries[0] == null) {
+            } else {
+              setInvoices(response.summaries);
             }
-            else{
-            setInvoices(response.summaries);
-            }
-            
           } else {
             alert(JSON.stringify(response));
           }
@@ -114,54 +110,47 @@ export default function ScreenInvoice(props) {
         />
       </View>
 
-      <View
-        style={{
-          height: perfectSize(150),
-          backgroundColor: 'white',
-          flexDirection: 'column',
-          alignItems: 'center',
-        }}>
-        <View
-          style={{alignSelf: 'flex-start', backgroundColor: 'white'}}></View>
+      <DibbleHeader {...props} title={langObj.invoiceTitle}></DibbleHeader>
 
-        <DibbleHeader {...props}></DibbleHeader>
-        <Text style={[screenInvoiceStyle.titleStyle]}>
-          {langObj.invoiceTitle}
-        </Text>
-      </View>
-    {invoices.length>0?(  <ScrollView style={{flex: 1}}>
-        <View
-          style={{
-            alignItems: 'center',
-            paddingBottom: perfectSize(100),
-            flexDirection: 'column',
-          }}>
-          {invoices.map((inv) => (
-            <CollapsibleInvoiceCard
-              setPlayAnimation={setPlayAnimation}
-              setAnimationType={setAnimationType}
-              inv={inv}
-              vat={vat}
-              dateString={
-                LocaleConfig.monthNames[inv.month - 1] + ' ' + String(inv.year)
-              }
-              incomeString={inv.order_sum}></CollapsibleInvoiceCard>
-          ))}
+      {invoices.length > 0 ? (
+        <ScrollView style={{flex: 1}}>
+          <View
+            style={{
+              alignItems: 'center',
+              paddingBottom: perfectSize(100),
+              flexDirection: 'column',
+            }}>
+            {invoices.map(inv => (
+              <CollapsibleInvoiceCard
+                setPlayAnimation={setPlayAnimation}
+                setAnimationType={setAnimationType}
+                inv={inv}
+                vat={vat}
+                dateString={
+                  LocaleConfig.monthNames[inv.month - 1] +
+                  ' ' +
+                  String(inv.year)
+                }
+                incomeString={inv.order_sum}></CollapsibleInvoiceCard>
+            ))}
+          </View>
+        </ScrollView>
+      ) : (
+        <View>
+          <Text
+            style={{
+              alignSelf: 'center',
+              marginTop: perfectSize(134),
+              fontFamily: 'OscarFM-Regular',
+              fontSize: perfectSize(75),
+
+              letterSpacing: perfectSize(-1.5),
+              color: '#d1d2d4',
+            }}>
+            {langObj.noResults}
+          </Text>
         </View>
-      </ScrollView>):<View>
-      <Text
-        style={{
-          alignSelf: 'center',
-          marginTop: perfectSize(134),
-          fontFamily: 'OscarFM-Regular',
-          fontSize: perfectSize(75),
-
-          letterSpacing: perfectSize(-1.5),
-          color: '#d1d2d4',
-        }}>
-        {langObj.noResults}
-      </Text>
-      </View>}
+      )}
       <ResponseAnimation
         playAnimation={playAnimation}
         setPlayAnimation={setPlayAnimation}

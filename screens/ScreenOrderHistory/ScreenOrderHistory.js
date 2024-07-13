@@ -123,6 +123,7 @@ export default function ScreenOrderHistory(props) {
     Animated.timing(flipDateAnim, {
       toValue: isDateOpened ? 0 : 3.14,
       duration: 500,
+      useNativeDriver: false,
     }).start();
   };
 
@@ -131,6 +132,7 @@ export default function ScreenOrderHistory(props) {
     Animated.timing(flipStatusAnim, {
       toValue: isSelectionOpened ? 0 : 3.14,
       duration: 500,
+      useNativeDriver: false,
     }).start();
   };
   const LottieRef = useRef(null);
@@ -175,6 +177,7 @@ export default function ScreenOrderHistory(props) {
     Animated.timing(successAnimation, {
       toValue: 1,
       duration: 2000,
+      useNativeDriver: false,
     }).start(() => {
       setAnimationSuccessPlay(false);
     });
@@ -327,29 +330,9 @@ export default function ScreenOrderHistory(props) {
           }
         />
       </View>
-      <View
-        style={{
-          backgroundColor: 'white',
-          flexDirection: 'column',
-          height: perfectSize(330),
-          alignItems: 'center',
-        }}>
-        <View
-          style={{alignSelf: 'flex-start', backgroundColor: 'white'}}></View>
-        <Text
-          style={{
-            fontSize: perfectSize(60),
-            position: 'absolute',
-            top: perfectSize(42),
-            fontWeight: 'normal',
-            flexWrap: 'wrap',
-            letterSpacing: perfectSize(-1),
-            fontFamily: 'OscarFM-Regular',
-          }}>
-          {langObj.OrderHistory}
-        </Text>
-        <DibbleHeader {...props}></DibbleHeader>
-      </View>
+
+      <DibbleHeader {...props} title={langObj.OrderHistory}></DibbleHeader>
+
       {/* {1 ? ( */}
 
       {date_string !== langObj.dates ? (

@@ -4,7 +4,7 @@ import LinearGradient from 'react-native-linear-gradient';
 import DisplayAcceptBid from './DisplayAcceptBid';
 import {bg_order_grey_end, bg_order_grey_start} from '../../resource/BaseValue';
 import getLanguage from '../../resource/LanguageSupport';
-import {COLORS, FONTS, SIZES} from '../../src/constants/theme';
+import SectionTitle from '../SectionTitle/SectionTitle';
 
 let langObj = getLanguage();
 
@@ -22,14 +22,10 @@ const ApprovedOrdersBar = ({
 
   return (
     <View style={styles.columnBarContainer}>
-      <View style={styles.barTitleContainer}>
-        <View style={styles.rightLine}></View>
-        <Text style={styles.columnTitle}>
-          {filteredOrders.length} {langObj.outgoing}
-        </Text>
-        <View style={styles.leftLine}></View>
-      </View>
-
+      <SectionTitle
+        title={langObj.outgoing}
+        filteredOrders={filteredOrders.length}
+      />
       <LinearGradient
         colors={[bg_order_grey_start, bg_order_grey_end]}
         style={styles.barLinearGradientStyle}>
@@ -37,10 +33,11 @@ const ApprovedOrdersBar = ({
           data={filteredOrders}
           renderItem={({item, index}) => (
             <DisplayAcceptBid
-              showModalBox={showModalBox}
               item={item}
               index={index}
+              showModalBox={showModalBox}
               setBidOrderReady={setBidOrderReady}
+              onSecondBtnPress={showModalBox}
               key={item.order_id}
             />
           )}
@@ -60,26 +57,6 @@ const styles = StyleSheet.create({
   barHeaderContainer: {
     flexDirection: 'row',
     alignItems: 'flex-start',
-  },
-  barTitleContainer: {
-    borderBottomColor: COLORS.dibbleYellow,
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
-  rightLine: {
-    width: 20,
-    height: 3,
-    backgroundColor: COLORS.dibbleYellow,
-  },
-  leftLine: {
-    height: 3,
-    backgroundColor: COLORS.dibbleYellow,
-    flex: 1,
-  },
-  columnTitle: {
-    ...FONTS.h2,
-    paddingHorizontal: SIZES.space4,
-    color: COLORS.ParagraphGray,
   },
   barLinearGradientStyle: {
     flexDirection: 'column',

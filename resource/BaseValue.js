@@ -106,7 +106,6 @@ export const modal_ready_for_shipment = 3;
 export const modal_select_delivery_method = 4;
 export const modal_order_summary = 5;
 
-export const top_margin_ios = 25;
 export const isForceRTL = true;
 export const timeForAcceptOrder = 5 * 60 * 1000;
 export const timeForAcceptOrderNotice = 30 * 1000;

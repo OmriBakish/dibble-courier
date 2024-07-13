@@ -11,9 +11,6 @@ import {
   View,
   Alert,
   AppState,
-  StyleSheet,
-  Modal,
-  TouchableOpacity,
 } from 'react-native';
 import pure from 'recompose/pure';
 import LottieView from 'lottie-react-native';
@@ -21,7 +18,6 @@ import ScreenOrderChange from '../../components//ModalOrderChange/screenOrderCha
 import ScreenRejectOrder from '../../components/ModalRejectOrder/ScreenRejectOrder';
 import {
   c_loading_icon,
-  c_text_black,
   displayTimeFormat,
   key_Accepted_Timed_orders,
   key_user_info,
@@ -37,14 +33,12 @@ import {
   rq_set_bid_order_ready,
   rq_update_device_info,
   sub_key_token,
-  top_margin_ios,
   rq_get_updated_bidded_orders,
   rq_supplier_get_order_details,
-  c_text_white,
 } from '../../resource/BaseValue';
 import ScreenFillBid from '../ScreenFillBid';
 import DibbleHeader from '../../components/DibbleHeader/DibbleHeader';
-import getLanguage from '../../resource/LanguageSupport';
+import getLanguage, {getPerfectSize} from '../../resource/LanguageSupport';
 import {
   getDataWithSubKey,
   makeAPostRequest,
@@ -52,16 +46,13 @@ import {
 import moment from 'moment';
 import SubmitBidScreen from '../ScreenSubmitBid';
 import SelectDeliveryScreen from '../ScreenSelectDelivery';
-import {globalStyles} from '../../resource/style/global';
 import KeepAwake from 'react-native-keep-awake';
 import NetInfo from '@react-native-community/netinfo';
 import messaging from '@react-native-firebase/messaging';
 import AsyncStorage from '@react-native-community/async-storage';
 import ScreenPickup from '../ScreenPickup';
 import ApprovedOrdersBar from '../../components/ApprovedOrdersBar/ApprovedOrdersBar';
-import Clock from '../../components/DateTime/ClockAndDate';
-import ReadyOrdersBar from '../../components/ReadyOrdersBar/ReadyOrdersBar/ReadyOrdersBar';
-import {perfectSize} from '../../components/DibbleHeader/style';
+import ReadyOrdersBar from '../../components/ReadyOrdersBar/ReadyOrdersBar';
 import {UserContext} from '../../resource/auth/UserContext';
 import GetPaidModal from '../../components/GetPaidModal/GetPaidModal';
 
@@ -70,6 +61,8 @@ let langObj = getLanguage();
 let isListenningFcm = false;
 const screenWidth = Math.round(Dimensions.get('window').width);
 const screenHeight = Math.round(Dimensions.get('window').height);
+
+let perfectSize = getPerfectSize();
 
 class DashBoardScreen extends React.Component {
   static contextType = UserContext;
@@ -116,11 +109,13 @@ class DashBoardScreen extends React.Component {
     Animated.timing(this.state.modalMarginTop, {
       toValue: 0,
       duration: 400,
+      useNativeDriver: false,
     }).start();
 
     Animated.timing(this.state.modalOpacity, {
       toValue: 1,
       duration: 800,
+      useNativeDriver: false,
     }).start();
   };
 
@@ -129,11 +124,13 @@ class DashBoardScreen extends React.Component {
     Animated.timing(this.state.modalMarginTop, {
       toValue: 1150,
       duration: 300,
+      useNativeDriver: false,
     }).start();
 
     Animated.timing(this.state.modalOpacity, {
       toValue: 0,
       duration: 200,
+      useNativeDriver: false,
     }).start();
   };
   check_updated_bidded_orders = () => {
@@ -277,7 +274,7 @@ class DashBoardScreen extends React.Component {
     });
   };
 
-  componentWillReceiveProps() {
+  componentDidUpdate() {
     setTimeout(() => {
       if (
         this.props.route != null &&
@@ -1309,6 +1306,7 @@ class DashBoardScreen extends React.Component {
       toValue: 1,
       duration: 2000,
       easing: Easing.linear,
+      useNativeDriver: false,
     }).start(() => {
       this.setState({animationFailedPlay: false});
     });
@@ -1320,6 +1318,7 @@ class DashBoardScreen extends React.Component {
       toValue: 1,
       duration: 2000,
       easing: Easing.linear,
+      useNativeDriver: false,
     }).start(() => {
       this.setState({animationSuccessPlay: false});
     });
@@ -1396,38 +1395,18 @@ class DashBoardScreen extends React.Component {
     allState.showGetPaidModal = state;
     this.setState(allState);
   };
+
   render() {
     //console.count('dashboard rendered')
 
     return (
       <View style={mStyle.mainDashBoardContainer}>
-        <View style={{height: Platform.OS === 'ios' ? top_margin_ios : 0}} />
-
-        {/* HEADER TITLE AND SUB_TITLES */}
-        <View style={[mStyle.mainTitleAndClockContainer]}>
-          {/* <TouchableOpacity onPress={()=>
-                  {
-                      this.play_edit_order_sound()
-                  this.showModalBox({},9)}} >
-                    <Image source={require('../../image/megaphone/group1918.png')} style={{height:50,width:50}}/>
-                    </TouchableOpacity> */}
-          <Text style={[globalStyles.textLarge, {color: c_text_black}]}>
-            {langObj.activeOrder}
-          </Text>
-
-          <Clock></Clock>
-        </View>
-        <View style={styles.container}>
-          <TouchableOpacity
-            onPress={() => this.handleShowGetPaidModal(true)}
-            style={styles.orderReadyButtonContainer}>
-            <Text style={[globalStyles.textGeneral, {color: c_text_white}]}>
-              {langObj.getEarlyPayment}
-            </Text>
-          </TouchableOpacity>
-        </View>
-        <DibbleHeader {...this.props}></DibbleHeader>
-
+        <DibbleHeader
+          {...this.props}
+          handleGetPaidModal={() => this.handleShowGetPaidModal(true)}
+          DashBoardScreen={true}
+          title={langObj.activeOrder}
+        />
         <Text
           style={[
             mStyle.noNetworkMessageTextStyle,
@@ -1471,7 +1450,6 @@ class DashBoardScreen extends React.Component {
 
         <View
           //onBackdropPress={this.closeModalBox}
-
           onRequestClose={this.closeModalBox}
           style={[
             mStyle.modalMainContainerStyle,
@@ -1541,23 +1519,5 @@ class DashBoardScreen extends React.Component {
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    position: 'absolute',
-    right: 20,
-    top: 20,
-    width: perfectSize(500),
-  },
-  orderReadyButtonContainer: {
-    alignSelf: 'stretch',
-    alignItems: 'center',
-    justifyContent: 'center',
-    paddingVertical: perfectSize(20),
-    borderRadius: 4,
-    color: '#ffffff',
-    backgroundColor: '#FFCA1A',
-  },
-});
 
 export default pure(DashBoardScreen);

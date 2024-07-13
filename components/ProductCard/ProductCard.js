@@ -33,8 +33,10 @@ function ProductCard({item}) {
           {item.product_name}
         </Text>
 
-        {getOptionsArray(item).map(option => (
-          <Text style={[ProductCardStyle.productCardProductOptionTextStyle]}>
+        {getOptionsArray(item).map((option, index) => (
+          <Text
+            style={[ProductCardStyle.productCardProductOptionTextStyle]}
+            key={index}>
             {option.name}: {option.value}
           </Text>
         ))}

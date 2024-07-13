@@ -1,11 +1,14 @@
 import React from 'react';
- import {SketchCanvas} from 'react-native-sketch-canvas';
 import ProgressImage from 'react-native-image-progress';
 import {ProgressBar} from 'react-native-progress/Bar';
- import {getOptionsArray} from '../resource/dibbleCommon';
- import {IncomingBarStyle} from '../components/IncomingOrdersBar/style';
+import {getOptionsArray} from '../resource/dibbleCommon';
+import {IncomingBarStyle} from '../components/IncomingOrdersBar/style';
 
-import {getHourFormat, getItemLogoSource,thousandsFilter} from '../resource/SupportFunction';
+import {
+  getHourFormat,
+  getItemLogoSource,
+  thousandsFilter,
+} from '../resource/SupportFunction';
 import {
   View,
   Text,
@@ -26,8 +29,7 @@ import {
   rq_get_bid_order,
   key_user_info,
   bg_white,
-   c_orange,
- 
+  c_orange,
   sub_key_token,
   c_loading_icon,
   c_text_grey,
@@ -37,7 +39,11 @@ import {
 } from '../resource/BaseValue';
 import getLanguage, {getPerfectSize} from '../resource/LanguageSupport';
 import {getTotalItems} from '../resource/SupportFunction';
-import {getDataWithSubKey, makeAPostRequest,getProductName} from '../resource/SupportFunction';
+import {
+  getDataWithSubKey,
+  makeAPostRequest,
+  getProductName,
+} from '../resource/SupportFunction';
 import {Repeat} from 'react-feather';
 import {useEffect} from 'react';
 let perfectSize = getPerfectSize();
@@ -108,7 +114,7 @@ function render_prod({item, index}) {
                 globalStyles.textAlmoniDLAAA_112,
                 {
                   color: 'rgb(133,133,134)',
-                   paddingTop: perfectSize(9),
+                  paddingTop: perfectSize(9),
                 },
               ]}>
               {item.prev_amount ? item.prev_amount : item.amount}
@@ -118,7 +124,7 @@ function render_prod({item, index}) {
                 globalStyles.textAlmoniDLAAA_30,
                 {
                   color: 'rgb(133,133,134)',
-                   marginBottom: perfectSize(6),
+                  marginBottom: perfectSize(6),
                 },
               ]}>
               {langObj.quantity}
@@ -151,7 +157,7 @@ function render_prod({item, index}) {
                     globalStyles.textAlmoniDLAAA_112,
                     {
                       color: 'rgb(133,133,134)',
-                       paddingTop: perfectSize(9),
+                      paddingTop: perfectSize(9),
                     },
                   ]}>
                   {item.amount}
@@ -161,7 +167,7 @@ function render_prod({item, index}) {
                     globalStyles.textAlmoniDLAAA_30,
                     {
                       color: 'rgb(133,133,134)',
-                       marginBottom: perfectSize(6),
+                      marginBottom: perfectSize(6),
                     },
                   ]}>
                   {langObj.quantity}
@@ -181,17 +187,25 @@ function render_prod({item, index}) {
                 style={[
                   globalStyles.textAlmoniDLAAA_40,
                   {fontSize: perfectSize(41), flexShrink: 1},
-                ]}>{
-                getProductName(item)}
+                ]}>
+                {getProductName(item)}
               </Text>
             </View>
 
-            <View style={{flexDirection:'row',marginTop:perfectSize(10)}}>
-            {getOptionsArray(item).map((option,index) => (
-              <Text style={[globalStyles.textAlmoniDLAAA_40,{marginStart:index>0?perfectSize(20):0}]}>
-               <Text style={globalStyles.textAlmoniDLAAA_Bold_40}> {option.name}</Text>: {option.value}
-              </Text>
-            ))}
+            <View style={{flexDirection: 'row', marginTop: perfectSize(10)}}>
+              {getOptionsArray(item).map((option, index) => (
+                <Text
+                  style={[
+                    globalStyles.textAlmoniDLAAA_40,
+                    {marginStart: index > 0 ? perfectSize(20) : 0},
+                  ]}>
+                  <Text style={globalStyles.textAlmoniDLAAA_Bold_40}>
+                    {' '}
+                    {option.name}
+                  </Text>
+                  : {option.value}
+                </Text>
+              ))}
             </View>
           </View>
           {no_price ? null : (
@@ -213,9 +227,13 @@ function render_prod({item, index}) {
                 }}>
                 {thousandsFilter(item.price)}
               </Text>
-              <Text style={[globalStyles.textOscarFmRegular_30,{marginStart:'auto'}]}>
-            {langObj.nis} {item.amount > 1 ? langObj.perUnit : ''}
-          </Text>
+              <Text
+                style={[
+                  globalStyles.textOscarFmRegular_30,
+                  {marginStart: 'auto'},
+                ]}>
+                {langObj.nis} {item.amount > 1 ? langObj.perUnit : ''}
+              </Text>
             </View>
           )}
         </View>
@@ -268,7 +286,7 @@ export default function ScreenPickup(props) {
     );
   };
   React.useEffect(() => {
-    getDataWithSubKey(key_user_info, sub_key_token, (token) => {
+    getDataWithSubKey(key_user_info, sub_key_token, token => {
       let dataObj = {
         request: rq_get_bid_order,
         token: token,
@@ -306,9 +324,9 @@ export default function ScreenPickup(props) {
       <View
         style={{
           flexDirection: 'row',
-           width: perfectSize(1700),
+          width: perfectSize(1700),
           height: perfectSize(1500),
- 
+
           backgroundColor: '#fcfcfc',
           borderRadius: 20,
           shadowColor: 'rgba(0, 0, 0, 0.15)',
@@ -376,14 +394,13 @@ export default function ScreenPickup(props) {
                 }}>
                 תתחדשו!
               </Text>
- 
+
               <Image
                 source={require('../image/login_logo.png')}
                 style={{height: perfectSize(400), width: perfectSize(500)}}
                 resizeMode="contain"></Image>
             </View>
 
- 
             <View
               style={{
                 flexDirection: 'row',
@@ -466,7 +483,7 @@ export default function ScreenPickup(props) {
                         fontFamily: 'AlmoniDLAAA',
                         fontSize: perfectSize(42),
                         fontWeight: 'normal',
-                         textAlign: 'right',
+                        textAlign: 'right',
                         color: frame == 0 ? '#46474b' : '#d1d2d4',
                       },
                     ]}>
@@ -500,45 +517,45 @@ export default function ScreenPickup(props) {
                     }}
                   />
                 </View>
-                <Text
-                  style={[
-                    globalStyles.textAlmoniDLAAA_30,
-                   ]}>
+                <Text style={[globalStyles.textAlmoniDLAAA_30]}>
                   {order_type[order.order_type]}
                 </Text>
-                <Text
-                  style={[
-                    globalStyles.textAlmoniDLAAA_40,
-                   ]}>
+                <Text style={[globalStyles.textAlmoniDLAAA_40]}>
                   {getHourFormat(order)}
                 </Text>
               </View>
             </View>
 
-            <View style={{flex:1,flexDirection:'column',   width: perfectSize(1080), display: frame == 0 ? 'flex' : 'none'}}>
+            <View
+              style={{
+                flex: 1,
+                flexDirection: 'column',
+                width: perfectSize(1080),
+                display: frame == 0 ? 'flex' : 'none',
+              }}>
               <FlatList
                 style={{
                   marginTop: perfectSize(27),
                   marginBottom: perfectSize(40),
-               
-                  flex:1
+
+                  flex: 1,
                 }}
                 data={order.products}
-                 renderItem={render_prod}
-                keyExtractor={(item) => item.product_id + item.option}
- 
+                renderItem={render_prod}
+                keyExtractor={item => item.product_id + item.option}
               />
               {order.notes ? (
-          <View style={IncomingBarStyle.orderNotesContainer }>
-            <Text style={IncomingBarStyle.orderNotesTitle}>
-              {langObj.orderComment}
-            </Text>
-             <ScrollView style={IncomingBarStyle.notesContainerFull}>
-              <Text style={[IncomingBarStyle.userNotes]}>{order.notes}</Text>
-            </ScrollView>
- 
-          </View>
-        ) : null}
+                <View style={IncomingBarStyle.orderNotesContainer}>
+                  <Text style={IncomingBarStyle.orderNotesTitle}>
+                    {langObj.orderComment}
+                  </Text>
+                  <ScrollView style={IncomingBarStyle.notesContainerFull}>
+                    <Text style={[IncomingBarStyle.userNotes]}>
+                      {order.notes}
+                    </Text>
+                  </ScrollView>
+                </View>
+              ) : null}
             </View>
 
             <View
@@ -559,10 +576,11 @@ export default function ScreenPickup(props) {
                 fontSize: perfectSize(50),
                 fontWeight: 'normal',
                 fontStyle: 'normal',
-                 textAlign: 'center',
+                textAlign: 'center',
                 color: '#000000',
               }}>
-              {langObj.total} {thousandsFilter(order.total_order_price)} {langObj.priceUnit}
+              {langObj.total} {thousandsFilter(order.total_order_price)}{' '}
+              {langObj.priceUnit}
             </Text>
             <Text
               style={{
@@ -590,15 +608,14 @@ export default function ScreenPickup(props) {
                 borderStyle: 'solid',
                 borderWidth: 1,
                 borderColor: '#707070',
- 
               }}>
-              <SketchCanvas
+              {/* <SketchCanvas
                 ref={(ref) => (canvasSignature = ref)}
                 style={{flex: 1}}
                 strokeColor={'black'}
                 strokeWidth={5}
                 onStrokeStart={() => setSignatureEmpty(false)}
-              />
+              /> */}
               <TouchableOpacity
                 style={{
                   width: perfectSize(80),
@@ -638,21 +655,17 @@ export default function ScreenPickup(props) {
                 {langObj.total}
               </Text>
 
- 
-
               <Text
                 style={{
                   fontFamily: 'OscarFM-Regular',
                   fontSize: perfectSize(75),
                   fontWeight: 'normal',
                   fontStyle: 'normal',
-    
-    
+
                   textAlign: 'right',
                   color: '#000000',
                   marginStart: 'auto',
                 }}>
- 
                 {langObj.priceUnit} {thousandsFilter(order.total_order_price)}
               </Text>
             </View>
@@ -710,9 +723,8 @@ export default function ScreenPickup(props) {
               style={{
                 alignItems: 'center',
                 marginEnd: perfectSize(40),
-                 padding: perfectSize(50),
+                padding: perfectSize(50),
 
- 
                 justifyContent: 'center',
                 height: perfectSize(60),
                 marginTop: perfectSize(40.5),
@@ -737,11 +749,11 @@ export default function ScreenPickup(props) {
           display: loading ? 'flex' : 'none',
           borderRadius: 20,
           backgroundColor: greyHasOpacity,
-           width: perfectSize(1700),
+          width: perfectSize(1700),
           height: perfectSize(1500),
           alignItems: 'center',
           justifyContent: 'center',
- 
+
           position: 'absolute',
         }}>
         <ActivityIndicator
@@ -803,7 +815,7 @@ const mStyle = StyleSheet.create({
     textAlign: 'center',
   },
 });
- 
+
 export function renderProduct(width, no_price) {
   return ({item, index}) => (
     <View
@@ -862,7 +874,7 @@ export function renderProduct(width, no_price) {
                 globalStyles.textAlmoniDLAAA_112,
                 {
                   color: 'rgb(133,133,134)',
-                   paddingTop: perfectSize(9),
+                  paddingTop: perfectSize(9),
                 },
               ]}>
               {item.prev_amount ? item.prev_amount : item.amount}
@@ -872,7 +884,7 @@ export function renderProduct(width, no_price) {
                 globalStyles.textAlmoniDLAAA_30,
                 {
                   color: 'rgb(133,133,134)',
-                   marginBottom: perfectSize(6),
+                  marginBottom: perfectSize(6),
                 },
               ]}>
               {langObj.quantity}
@@ -905,7 +917,7 @@ export function renderProduct(width, no_price) {
                     globalStyles.textAlmoniDLAAA_112,
                     {
                       color: 'rgb(133,133,134)',
-                       paddingTop: perfectSize(9),
+                      paddingTop: perfectSize(9),
                     },
                   ]}>
                   {item.amount}
@@ -915,7 +927,7 @@ export function renderProduct(width, no_price) {
                     globalStyles.textAlmoniDLAAA_30,
                     {
                       color: 'rgb(133,133,134)',
-                       marginBottom: perfectSize(6),
+                      marginBottom: perfectSize(6),
                     },
                   ]}>
                   {langObj.quantity}
@@ -931,7 +943,6 @@ export function renderProduct(width, no_price) {
               flexShrink: 1,
             }}>
             <View style={[mStyle.textContainer]}>
- 
               <Text
                 style={[
                   globalStyles.textAlmoniDLAAA_40,
@@ -940,7 +951,7 @@ export function renderProduct(width, no_price) {
                 {getProductName(item)}
               </Text>
             </View>
-            {getOptionsArray(item).map((option) => (
+            {getOptionsArray(item).map(option => (
               <Text style={[globalStyles.textAlmoniDLAAA_30]}>
                 {option.name}: {option.value}
               </Text>
@@ -959,14 +970,18 @@ export function renderProduct(width, no_price) {
                   fontSize: perfectSize(50),
                   fontWeight: 'normal',
                   fontStyle: 'normal',
-                   textAlign: 'right',
+                  textAlign: 'right',
                   color: '#000000',
                 }}>
                 {item.price}
               </Text>
-                       <Text style={[globalStyles.textOscarFmRegular_30 ,{marginStart:'auto'}]}>
-            {langObj.nis} {item.amount > 1 ? langObj.perUnit : ''}
-          </Text>
+              <Text
+                style={[
+                  globalStyles.textOscarFmRegular_30,
+                  {marginStart: 'auto'},
+                ]}>
+                {langObj.nis} {item.amount > 1 ? langObj.perUnit : ''}
+              </Text>
             </View>
           )}
         </View>
