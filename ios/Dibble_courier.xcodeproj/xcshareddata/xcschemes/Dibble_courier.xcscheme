@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-               BuildableName = "Dibble_suppliers_new.app"
-               BlueprintName = "Dibble_suppliers_new"
-               ReferencedContainer = "container:Dibble_suppliers_new.xcodeproj">
+               BuildableName = "Dibble_courier.app"
+               BlueprintName = "Dibble_courier"
+               ReferencedContainer = "container:Dibble_courier.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "00E356ED1AD99517003FC87E"
-               BuildableName = "Dibble_suppliers_newTests.xctest"
-               BlueprintName = "Dibble_suppliers_newTests"
-               ReferencedContainer = "container:Dibble_suppliers_new.xcodeproj">
+               BuildableName = "Dibble_courierTests.xctest"
+               BlueprintName = "Dibble_courierTests"
+               ReferencedContainer = "container:Dibble_courier.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -55,9 +55,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "Dibble_suppliers_new.app"
-            BlueprintName = "Dibble_suppliers_new"
-            ReferencedContainer = "container:Dibble_suppliers_new.xcodeproj">
+            BuildableName = "Dibble_courier.app"
+            BlueprintName = "Dibble_courier"
+            ReferencedContainer = "container:Dibble_courier.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -72,9 +72,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "Dibble_suppliers_new.app"
-            BlueprintName = "Dibble_suppliers_new"
-            ReferencedContainer = "container:Dibble_suppliers_new.xcodeproj">
+            BuildableName = "Dibble_courier.app"
+            BlueprintName = "Dibble_courier"
+            ReferencedContainer = "container:Dibble_courier.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

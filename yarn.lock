@@ -3326,9 +3326,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"Dibble_suppliers_new@workspace:.":
+"Dibble_courier@workspace:.":
   version: 0.0.0-use.local
-  resolution: "Dibble_suppliers_new@workspace:."
+  resolution: "Dibble_courier@workspace:."
   dependencies:
     "@babel/core": ^7.20.0
     "@babel/preset-env": ^7.20.0

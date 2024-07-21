@@ -1,4 +1,4 @@
-package com.dibble_suppliers_new
+package com.Dibble_courier
 
 import android.app.Application
 import com.facebook.react.PackageList

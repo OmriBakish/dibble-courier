@@ -75,9 +75,9 @@ android {
     buildToolsVersion rootProject.ext.buildToolsVersion
     compileSdk rootProject.ext.compileSdkVersion
 
-    namespace "com.dibble_suppliers_new"
+    namespace "com.Dibble_courier"
     defaultConfig {
-        applicationId "com.dibble_suppliers_new"
+        applicationId "com.Dibble_courier"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1

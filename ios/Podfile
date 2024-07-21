@@ -14,7 +14,7 @@ if linkage != nil
   use_frameworks! :linkage => linkage.to_sym
 end
 
-target 'Dibble_suppliers_new' do
+target 'Dibble_courier' do
   config = use_native_modules!
   pod 'Firebase', :modular_headers => true
   pod 'FirebaseCoreInternal', :modular_headers => true
@@ -27,7 +27,7 @@ target 'Dibble_suppliers_new' do
     :app_path => "#{Pod::Config.instance.installation_root}/.."
   )
 
-  target 'Dibble_suppliers_newTests' do
+  target 'Dibble_courierTests' do
     inherit! :complete
     # Pods for testing
   end

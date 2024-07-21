@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		00E356F31AD99517003FC87E /* Dibble_suppliers_newTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* Dibble_suppliers_newTests.m */; };
-		0C80B921A6F3F58F76C31292 /* libPods-Dibble_suppliers_new.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DCACB8F33CDC322A6C60F78 /* libPods-Dibble_suppliers_new.a */; };
+		00E356F31AD99517003FC87E /* Dibble_courierTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* Dibble_courierTests.m */; };
+		0C80B921A6F3F58F76C31292 /* libPods-Dibble_courier.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DCACB8F33CDC322A6C60F78 /* libPods-Dibble_courier.a */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.mm */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
@@ -21,7 +21,7 @@
 		3791E4CB81B24AE990FA9AD6 /* HelveticaNeue Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AFB5E3DEA9864A4EA5BD5F0B /* HelveticaNeue Medium.ttf */; };
 		388C29F71BBF413A890E3185 /* HelveticaNeueIt.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7C697E00EB1D4D9CB96202E2 /* HelveticaNeueIt.ttf */; };
 		42D35065700446E8966A4D00 /* AlmoniDLAAA-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 10CDEB805FAC4F778A8CD3D9 /* AlmoniDLAAA-Bold.otf */; };
-		7699B88040F8A987B510C191 /* libPods-Dibble_suppliers_new-Dibble_suppliers_newTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F6CBCC0A4E27FBF8BF4A61 /* libPods-Dibble_suppliers_new-Dibble_suppliers_newTests.a */; };
+		7699B88040F8A987B510C191 /* libPods-Dibble_courier-Dibble_courierTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F6CBCC0A4E27FBF8BF4A61 /* libPods-Dibble_courier-Dibble_courierTests.a */; };
 		803B99A78C3E3364B4815B4F /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 5525BD2A732322BF0736E38D /* PrivacyInfo.xcprivacy */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		8A6DE98803794748986829CF /* AlmoniDLAAA.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6AAE7257E9244C61A7FCE422 /* AlmoniDLAAA.otf */; };
@@ -41,34 +41,34 @@
 			containerPortal = 83CBB9F71A601CBA00E9B192 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 13B07F861A680F5B00A75B9A;
-			remoteInfo = Dibble_suppliers_new;
+			remoteInfo = Dibble_courier;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		00E356EE1AD99517003FC87E /* Dibble_suppliers_newTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Dibble_suppliers_newTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		00E356EE1AD99517003FC87E /* Dibble_courierTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Dibble_courierTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		00E356F21AD99517003FC87E /* Dibble_suppliers_newTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Dibble_suppliers_newTests.m; sourceTree = "<group>"; };
+		00E356F21AD99517003FC87E /* Dibble_courierTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Dibble_courierTests.m; sourceTree = "<group>"; };
 		10CDEB805FAC4F778A8CD3D9 /* AlmoniDLAAA-Bold.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "AlmoniDLAAA-Bold.otf"; path = "../src/assets/fonts/AlmoniDLAAA-Bold.otf"; sourceTree = "<group>"; };
-		13B07F961A680F5B00A75B9A /* Dibble_suppliers_new.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Dibble_suppliers_new.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = Dibble_suppliers_new/AppDelegate.h; sourceTree = "<group>"; };
-		13B07FB01A68108700A75B9A /* AppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = AppDelegate.mm; path = Dibble_suppliers_new/AppDelegate.mm; sourceTree = "<group>"; };
-		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = Dibble_suppliers_new/Images.xcassets; sourceTree = "<group>"; };
-		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Dibble_suppliers_new/Info.plist; sourceTree = "<group>"; };
-		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = Dibble_suppliers_new/main.m; sourceTree = "<group>"; };
-		13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = PrivacyInfo.xcprivacy; path = Dibble_suppliers_new/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		13B07F961A680F5B00A75B9A /* Dibble_courier.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Dibble_courier.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = Dibble_courier/AppDelegate.h; sourceTree = "<group>"; };
+		13B07FB01A68108700A75B9A /* AppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = AppDelegate.mm; path = Dibble_courier/AppDelegate.mm; sourceTree = "<group>"; };
+		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = Dibble_courier/Images.xcassets; sourceTree = "<group>"; };
+		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Dibble_courier/Info.plist; sourceTree = "<group>"; };
+		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = Dibble_courier/main.m; sourceTree = "<group>"; };
+		13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = PrivacyInfo.xcprivacy; path = Dibble_courier/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		166F1A74EC5A4FDB928CE687 /* OscarFM-Regular.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "OscarFM-Regular.otf"; path = "../src/assets/fonts/OscarFM-Regular.otf"; sourceTree = "<group>"; };
-		19F6CBCC0A4E27FBF8BF4A61 /* libPods-Dibble_suppliers_new-Dibble_suppliers_newTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Dibble_suppliers_new-Dibble_suppliers_newTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		19F6CBCC0A4E27FBF8BF4A61 /* libPods-Dibble_courier-Dibble_courierTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Dibble_courier-Dibble_courierTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2124DDBB9BF34B3B8623BD7D /* HelveticaNeue.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = HelveticaNeue.ttf; path = ../src/assets/fonts/HelveticaNeue.ttf; sourceTree = "<group>"; };
 		29F3D6649F114DFB9F2437E8 /* AlmoniDLAAA-Black.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "AlmoniDLAAA-Black.otf"; path = "../src/assets/fonts/AlmoniDLAAA-Black.otf"; sourceTree = "<group>"; };
 		30BE60684AAA4AA59C2A4A1A /* HelveticaNeueHv.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = HelveticaNeueHv.ttf; path = ../src/assets/fonts/HelveticaNeueHv.ttf; sourceTree = "<group>"; };
-		3B4392A12AC88292D35C810B /* Pods-Dibble_suppliers_new.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dibble_suppliers_new.debug.xcconfig"; path = "Target Support Files/Pods-Dibble_suppliers_new/Pods-Dibble_suppliers_new.debug.xcconfig"; sourceTree = "<group>"; };
+		3B4392A12AC88292D35C810B /* Pods-Dibble_courier.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dibble_courier.debug.xcconfig"; path = "Target Support Files/Pods-Dibble_courier/Pods-Dibble_courier.debug.xcconfig"; sourceTree = "<group>"; };
 		3EC5329B8D23428BBF7C8D73 /* HelveticaNeue Light.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "HelveticaNeue Light.ttf"; path = "../src/assets/fonts/HelveticaNeue Light.ttf"; sourceTree = "<group>"; };
 		485F4BCC323D43E58C6CF854 /* HelveticaNeue Thin.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "HelveticaNeue Thin.ttf"; path = "../src/assets/fonts/HelveticaNeue Thin.ttf"; sourceTree = "<group>"; };
-		5525BD2A732322BF0736E38D /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xml; name = PrivacyInfo.xcprivacy; path = Dibble_suppliers_new/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
-		5709B34CF0A7D63546082F79 /* Pods-Dibble_suppliers_new.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dibble_suppliers_new.release.xcconfig"; path = "Target Support Files/Pods-Dibble_suppliers_new/Pods-Dibble_suppliers_new.release.xcconfig"; sourceTree = "<group>"; };
-		5B7EB9410499542E8C5724F5 /* Pods-Dibble_suppliers_new-Dibble_suppliers_newTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dibble_suppliers_new-Dibble_suppliers_newTests.debug.xcconfig"; path = "Target Support Files/Pods-Dibble_suppliers_new-Dibble_suppliers_newTests/Pods-Dibble_suppliers_new-Dibble_suppliers_newTests.debug.xcconfig"; sourceTree = "<group>"; };
-		5DCACB8F33CDC322A6C60F78 /* libPods-Dibble_suppliers_new.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Dibble_suppliers_new.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5525BD2A732322BF0736E38D /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xml; name = PrivacyInfo.xcprivacy; path = Dibble_courier/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		5709B34CF0A7D63546082F79 /* Pods-Dibble_courier.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dibble_courier.release.xcconfig"; path = "Target Support Files/Pods-Dibble_courier/Pods-Dibble_courier.release.xcconfig"; sourceTree = "<group>"; };
+		5B7EB9410499542E8C5724F5 /* Pods-Dibble_courier-Dibble_courierTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dibble_courier-Dibble_courierTests.debug.xcconfig"; path = "Target Support Files/Pods-Dibble_courier-Dibble_courierTests/Pods-Dibble_courier-Dibble_courierTests.debug.xcconfig"; sourceTree = "<group>"; };
+		5DCACB8F33CDC322A6C60F78 /* libPods-Dibble_courier.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Dibble_courier.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		670F3AF2BE5B4EB6B2C7193A /* HelveticaNeueMed.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = HelveticaNeueMed.ttf; path = ../src/assets/fonts/HelveticaNeueMed.ttf; sourceTree = "<group>"; };
 		6800009929104F738F6C08DF /* Helvetica Neu Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Helvetica Neu Bold.ttf"; path = "../src/assets/fonts/Helvetica Neu Bold.ttf"; sourceTree = "<group>"; };
 		6AAE7257E9244C61A7FCE422 /* AlmoniDLAAA.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = AlmoniDLAAA.otf; path = ../src/assets/fonts/AlmoniDLAAA.otf; sourceTree = "<group>"; };
@@ -76,13 +76,13 @@
 		762BE8CB3E1A438DA786D588 /* HelveticaNeue BlackCond.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "HelveticaNeue BlackCond.ttf"; path = "../src/assets/fonts/HelveticaNeue BlackCond.ttf"; sourceTree = "<group>"; };
 		7C697E00EB1D4D9CB96202E2 /* HelveticaNeueIt.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = HelveticaNeueIt.ttf; path = ../src/assets/fonts/HelveticaNeueIt.ttf; sourceTree = "<group>"; };
 		7EBE24E788C746D99AF489A8 /* AlmoniDLAAA-Light.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "AlmoniDLAAA-Light.otf"; path = "../src/assets/fonts/AlmoniDLAAA-Light.otf"; sourceTree = "<group>"; };
-		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = Dibble_suppliers_new/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		89C6BE57DB24E9ADA2F236DE /* Pods-Dibble_suppliers_new-Dibble_suppliers_newTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dibble_suppliers_new-Dibble_suppliers_newTests.release.xcconfig"; path = "Target Support Files/Pods-Dibble_suppliers_new-Dibble_suppliers_newTests/Pods-Dibble_suppliers_new-Dibble_suppliers_newTests.release.xcconfig"; sourceTree = "<group>"; };
+		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = Dibble_courier/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		89C6BE57DB24E9ADA2F236DE /* Pods-Dibble_courier-Dibble_courierTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dibble_courier-Dibble_courierTests.release.xcconfig"; path = "Target Support Files/Pods-Dibble_courier-Dibble_courierTests/Pods-Dibble_courier-Dibble_courierTests.release.xcconfig"; sourceTree = "<group>"; };
 		96B635D304F34975A75EE2ED /* OscarFM.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = OscarFM.otf; path = ../src/assets/fonts/OscarFM.otf; sourceTree = "<group>"; };
 		AFB5E3DEA9864A4EA5BD5F0B /* HelveticaNeue Medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "HelveticaNeue Medium.ttf"; path = "../src/assets/fonts/HelveticaNeue Medium.ttf"; sourceTree = "<group>"; };
 		CC0B9FB26BE94825B6E83989 /* HelveticaNeueBd.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = HelveticaNeueBd.ttf; path = ../src/assets/fonts/HelveticaNeueBd.ttf; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
-		FF48DA152C35D9DC0077B428 /* Dibble_suppliers_new.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = Dibble_suppliers_new.entitlements; path = Dibble_suppliers_new/Dibble_suppliers_new.entitlements; sourceTree = "<group>"; };
+		FF48DA152C35D9DC0077B428 /* Dibble_courier.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = Dibble_courier.entitlements; path = Dibble_courier/Dibble_courier.entitlements; sourceTree = "<group>"; };
 		FF48DA182C35DD950077B428 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -91,7 +91,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7699B88040F8A987B510C191 /* libPods-Dibble_suppliers_new-Dibble_suppliers_newTests.a in Frameworks */,
+				7699B88040F8A987B510C191 /* libPods-Dibble_courier-Dibble_courierTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -99,20 +99,20 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0C80B921A6F3F58F76C31292 /* libPods-Dibble_suppliers_new.a in Frameworks */,
+				0C80B921A6F3F58F76C31292 /* libPods-Dibble_courier.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		00E356EF1AD99517003FC87E /* Dibble_suppliers_newTests */ = {
+		00E356EF1AD99517003FC87E /* Dibble_courierTests */ = {
 			isa = PBXGroup;
 			children = (
-				00E356F21AD99517003FC87E /* Dibble_suppliers_newTests.m */,
+				00E356F21AD99517003FC87E /* Dibble_courierTests.m */,
 				00E356F01AD99517003FC87E /* Supporting Files */,
 			);
-			path = Dibble_suppliers_newTests;
+			path = Dibble_courierTests;
 			sourceTree = "<group>";
 		};
 		00E356F01AD99517003FC87E /* Supporting Files */ = {
@@ -123,10 +123,10 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		13B07FAE1A68108700A75B9A /* Dibble_suppliers_new */ = {
+		13B07FAE1A68108700A75B9A /* Dibble_courier */ = {
 			isa = PBXGroup;
 			children = (
-				FF48DA152C35D9DC0077B428 /* Dibble_suppliers_new.entitlements */,
+				FF48DA152C35D9DC0077B428 /* Dibble_courier.entitlements */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.mm */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
@@ -136,15 +136,15 @@
 				13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */,
 				5525BD2A732322BF0736E38D /* PrivacyInfo.xcprivacy */,
 			);
-			name = Dibble_suppliers_new;
+			name = Dibble_courier;
 			sourceTree = "<group>";
 		};
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
-				5DCACB8F33CDC322A6C60F78 /* libPods-Dibble_suppliers_new.a */,
-				19F6CBCC0A4E27FBF8BF4A61 /* libPods-Dibble_suppliers_new-Dibble_suppliers_newTests.a */,
+				5DCACB8F33CDC322A6C60F78 /* libPods-Dibble_courier.a */,
+				19F6CBCC0A4E27FBF8BF4A61 /* libPods-Dibble_courier-Dibble_courierTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -184,9 +184,9 @@
 			isa = PBXGroup;
 			children = (
 				FF48DA182C35DD950077B428 /* GoogleService-Info.plist */,
-				13B07FAE1A68108700A75B9A /* Dibble_suppliers_new */,
+				13B07FAE1A68108700A75B9A /* Dibble_courier */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
-				00E356EF1AD99517003FC87E /* Dibble_suppliers_newTests */,
+				00E356EF1AD99517003FC87E /* Dibble_courierTests */,
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				BBD78D7AC51CEA395F1C20DB /* Pods */,
@@ -200,8 +200,8 @@
 		83CBBA001A601CBA00E9B192 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				13B07F961A680F5B00A75B9A /* Dibble_suppliers_new.app */,
-				00E356EE1AD99517003FC87E /* Dibble_suppliers_newTests.xctest */,
+				13B07F961A680F5B00A75B9A /* Dibble_courier.app */,
+				00E356EE1AD99517003FC87E /* Dibble_courierTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -209,10 +209,10 @@
 		BBD78D7AC51CEA395F1C20DB /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				3B4392A12AC88292D35C810B /* Pods-Dibble_suppliers_new.debug.xcconfig */,
-				5709B34CF0A7D63546082F79 /* Pods-Dibble_suppliers_new.release.xcconfig */,
-				5B7EB9410499542E8C5724F5 /* Pods-Dibble_suppliers_new-Dibble_suppliers_newTests.debug.xcconfig */,
-				89C6BE57DB24E9ADA2F236DE /* Pods-Dibble_suppliers_new-Dibble_suppliers_newTests.release.xcconfig */,
+				3B4392A12AC88292D35C810B /* Pods-Dibble_courier.debug.xcconfig */,
+				5709B34CF0A7D63546082F79 /* Pods-Dibble_courier.release.xcconfig */,
+				5B7EB9410499542E8C5724F5 /* Pods-Dibble_courier-Dibble_courierTests.debug.xcconfig */,
+				89C6BE57DB24E9ADA2F236DE /* Pods-Dibble_courier-Dibble_courierTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -220,9 +220,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		00E356ED1AD99517003FC87E /* Dibble_suppliers_newTests */ = {
+		00E356ED1AD99517003FC87E /* Dibble_courierTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "Dibble_suppliers_newTests" */;
+			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "Dibble_courierTests" */;
 			buildPhases = (
 				A55EABD7B0C7F3A422A6CC61 /* [CP] Check Pods Manifest.lock */,
 				00E356EA1AD99517003FC87E /* Sources */,
@@ -236,14 +236,14 @@
 			dependencies = (
 				00E356F51AD99517003FC87E /* PBXTargetDependency */,
 			);
-			name = Dibble_suppliers_newTests;
-			productName = Dibble_suppliers_newTests;
-			productReference = 00E356EE1AD99517003FC87E /* Dibble_suppliers_newTests.xctest */;
+			name = Dibble_courierTests;
+			productName = Dibble_courierTests;
+			productReference = 00E356EE1AD99517003FC87E /* Dibble_courierTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		13B07F861A680F5B00A75B9A /* Dibble_suppliers_new */ = {
+		13B07F861A680F5B00A75B9A /* Dibble_courier */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "Dibble_suppliers_new" */;
+			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "Dibble_courier" */;
 			buildPhases = (
 				C38B50BA6285516D6DCD4F65 /* [CP] Check Pods Manifest.lock */,
 				13B07F871A680F5B00A75B9A /* Sources */,
@@ -258,9 +258,9 @@
 			);
 			dependencies = (
 			);
-			name = Dibble_suppliers_new;
-			productName = Dibble_suppliers_new;
-			productReference = 13B07F961A680F5B00A75B9A /* Dibble_suppliers_new.app */;
+			name = Dibble_courier;
+			productName = Dibble_courier;
+			productReference = 13B07F961A680F5B00A75B9A /* Dibble_courier.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -280,7 +280,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "Dibble_suppliers_new" */;
+			buildConfigurationList = 83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "Dibble_courier" */;
 			compatibilityVersion = "Xcode 12.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -293,8 +293,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				13B07F861A680F5B00A75B9A /* Dibble_suppliers_new */,
-				00E356ED1AD99517003FC87E /* Dibble_suppliers_newTests */,
+				13B07F861A680F5B00A75B9A /* Dibble_courier */,
+				00E356ED1AD99517003FC87E /* Dibble_courierTests */,
 			);
 		};
 /* End PBXProject section */
@@ -360,15 +360,15 @@
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Dibble_suppliers_new/Pods-Dibble_suppliers_new-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-Dibble_courier/Pods-Dibble_courier-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Dibble_suppliers_new/Pods-Dibble_suppliers_new-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-Dibble_courier/Pods-Dibble_courier-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Dibble_suppliers_new/Pods-Dibble_suppliers_new-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Dibble_courier/Pods-Dibble_courier-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		89C5F2A142B038208A77F0B2 /* [CP-User] [RNFB] Core Configuration */ = {
@@ -399,7 +399,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Dibble_suppliers_new-Dibble_suppliers_newTests-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-Dibble_courier-Dibble_courierTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -421,7 +421,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Dibble_suppliers_new-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-Dibble_courier-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -434,15 +434,15 @@
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Dibble_suppliers_new-Dibble_suppliers_newTests/Pods-Dibble_suppliers_new-Dibble_suppliers_newTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-Dibble_courier-Dibble_courierTests/Pods-Dibble_courier-Dibble_courierTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Dibble_suppliers_new-Dibble_suppliers_newTests/Pods-Dibble_suppliers_new-Dibble_suppliers_newTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-Dibble_courier-Dibble_courierTests/Pods-Dibble_courier-Dibble_courierTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Dibble_suppliers_new-Dibble_suppliers_newTests/Pods-Dibble_suppliers_new-Dibble_suppliers_newTests-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Dibble_courier-Dibble_courierTests/Pods-Dibble_courier-Dibble_courierTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		E235C05ADACE081382539298 /* [CP] Copy Pods Resources */ = {
@@ -451,15 +451,15 @@
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Dibble_suppliers_new/Pods-Dibble_suppliers_new-resources-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-Dibble_courier/Pods-Dibble_courier-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Dibble_suppliers_new/Pods-Dibble_suppliers_new-resources-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-Dibble_courier/Pods-Dibble_courier-resources-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Dibble_suppliers_new/Pods-Dibble_suppliers_new-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Dibble_courier/Pods-Dibble_courier-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		F6A41C54EA430FDDC6A6ED99 /* [CP] Copy Pods Resources */ = {
@@ -468,15 +468,15 @@
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Dibble_suppliers_new-Dibble_suppliers_newTests/Pods-Dibble_suppliers_new-Dibble_suppliers_newTests-resources-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-Dibble_courier-Dibble_courierTests/Pods-Dibble_courier-Dibble_courierTests-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Dibble_suppliers_new-Dibble_suppliers_newTests/Pods-Dibble_suppliers_new-Dibble_suppliers_newTests-resources-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-Dibble_courier-Dibble_courierTests/Pods-Dibble_courier-Dibble_courierTests-resources-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Dibble_suppliers_new-Dibble_suppliers_newTests/Pods-Dibble_suppliers_new-Dibble_suppliers_newTests-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Dibble_courier-Dibble_courierTests/Pods-Dibble_courier-Dibble_courierTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -486,7 +486,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				00E356F31AD99517003FC87E /* Dibble_suppliers_newTests.m in Sources */,
+				00E356F31AD99517003FC87E /* Dibble_courierTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -504,7 +504,7 @@
 /* Begin PBXTargetDependency section */
 		00E356F51AD99517003FC87E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 13B07F861A680F5B00A75B9A /* Dibble_suppliers_new */;
+			target = 13B07F861A680F5B00A75B9A /* Dibble_courier */;
 			targetProxy = 00E356F41AD99517003FC87E /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -512,14 +512,14 @@
 /* Begin XCBuildConfiguration section */
 		00E356F61AD99517003FC87E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5B7EB9410499542E8C5724F5 /* Pods-Dibble_suppliers_new-Dibble_suppliers_newTests.debug.xcconfig */;
+			baseConfigurationReference = 5B7EB9410499542E8C5724F5 /* Pods-Dibble_courier-Dibble_courierTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = Dibble_suppliers_newTests/Info.plist;
+				INFOPLIST_FILE = Dibble_courierTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -533,17 +533,17 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Dibble_suppliers_new.app/Dibble_suppliers_new";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Dibble_courier.app/Dibble_courier";
 			};
 			name = Debug;
 		};
 		00E356F71AD99517003FC87E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 89C6BE57DB24E9ADA2F236DE /* Pods-Dibble_suppliers_new-Dibble_suppliers_newTests.release.xcconfig */;
+			baseConfigurationReference = 89C6BE57DB24E9ADA2F236DE /* Pods-Dibble_courier-Dibble_courierTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
-				INFOPLIST_FILE = Dibble_suppliers_newTests/Info.plist;
+				INFOPLIST_FILE = Dibble_courierTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -557,21 +557,21 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Dibble_suppliers_new.app/Dibble_suppliers_new";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Dibble_courier.app/Dibble_courier";
 			};
 			name = Release;
 		};
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3B4392A12AC88292D35C810B /* Pods-Dibble_suppliers_new.debug.xcconfig */;
+			baseConfigurationReference = 3B4392A12AC88292D35C810B /* Pods-Dibble_courier.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_ENTITLEMENTS = Dibble_suppliers_new/Dibble_suppliers_new.entitlements;
+				CODE_SIGN_ENTITLEMENTS = Dibble_courier/Dibble_courier.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = PQ82VJLQ9G;
 				ENABLE_BITCODE = NO;
-				INFOPLIST_FILE = Dibble_suppliers_new/Info.plist;
+				INFOPLIST_FILE = Dibble_courier/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -583,27 +583,27 @@
 					"-lc++",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.dibble.suppliers;
-				PRODUCT_NAME = Dibble_suppliers_new;
+				PRODUCT_NAME = Dibble_courier;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 2;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5709B34CF0A7D63546082F79 /* Pods-Dibble_suppliers_new.release.xcconfig */;
+			baseConfigurationReference = 5709B34CF0A7D63546082F79 /* Pods-Dibble_courier.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_ENTITLEMENTS = Dibble_suppliers_new/Dibble_suppliers_new.entitlements;
+				CODE_SIGN_ENTITLEMENTS = Dibble_courier/Dibble_courier.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = PQ82VJLQ9G;
-				INFOPLIST_FILE = Dibble_suppliers_new/Info.plist;
+				INFOPLIST_FILE = Dibble_courier/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -615,12 +615,12 @@
 					"-lc++",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.dibble.suppliers;
-				PRODUCT_NAME = Dibble_suppliers_new;
+				PRODUCT_NAME = Dibble_courier;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 2;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;
@@ -698,7 +698,10 @@
 					"-DFOLLY_CFG_NO_COROUTINES=1",
 					"-DFOLLY_HAVE_CLOCK_GETTIME=1",
 				);
-				OTHER_LDFLAGS = "$(inherited)  ";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					" ",
+				);
 				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
 				SDKROOT = iphoneos;
 				USE_HERMES = true;
@@ -770,7 +773,10 @@
 					"-DFOLLY_CFG_NO_COROUTINES=1",
 					"-DFOLLY_HAVE_CLOCK_GETTIME=1",
 				);
-				OTHER_LDFLAGS = "$(inherited)  ";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					" ",
+				);
 				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
 				SDKROOT = iphoneos;
 				USE_HERMES = true;
@@ -781,7 +787,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "Dibble_suppliers_newTests" */ = {
+		00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "Dibble_courierTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				00E356F61AD99517003FC87E /* Debug */,
@@ -790,7 +796,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "Dibble_suppliers_new" */ = {
+		13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "Dibble_courier" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				13B07F941A680F5B00A75B9A /* Debug */,
@@ -799,7 +805,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "Dibble_suppliers_new" */ = {
+		83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "Dibble_courier" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				83CBBA201A601CBA00E9B192 /* Debug */,
