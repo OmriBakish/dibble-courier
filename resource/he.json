@@ -1,7 +1,14 @@
 {
+  "registerOrLogin": "הרשמה / כניסה לחשבון",
+  "enterYourMobileNumber": "הזן את מספר הנייד שלך",
+  "yourPhoneNumber": "מספר הנייד שלך",
+  "putValidPhoneNumber": "הזן מספר נייד תקין",
+  "wrongPhoneNumber": "מספר הנייד אינו תקין",
+
   "clientSignature": "חתימת המקבל",
   "appName": "Dibble",
   "appSlogan": "אתה יכול לבנות עלינו.",
+  "": "שם משתמש",
   "userName": "שם משתמש",
   "password": "סיסמה",
   "onlyIllustrate": "התמונה להמחשה בלבד",

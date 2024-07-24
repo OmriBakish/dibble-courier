@@ -9,6 +9,7 @@ import {COLORS, FONTS} from '../../src/constants/theme';
  * @param {object} style - Additional styles to be applied to the button container.
  * @param {string} text - The text to be displayed on the button.
  * @param {boolean} small - If true, renders a smaller sized button. Default is false.
+ * @param {boolean} noBorder - If true, renders the button with no border.
  * @param {object} inputValidation - Validation status object.
  */
 
@@ -19,13 +20,15 @@ const CustomButton = ({
   style,
   text,
   small,
+  noBorder,
   inputValidation,
   disabled,
 }) => {
   return (
     <TouchableOpacity
       style={[
-        styles(backgroundColor, borderColor, small, inputValidation).container,
+        styles(backgroundColor, borderColor, small, inputValidation, noBorder)
+          .container,
         style,
       ]}
       onPress={onPress}
@@ -37,7 +40,13 @@ const CustomButton = ({
   );
 };
 
-const styles = (backgroundColor, borderColor, small, inputValidation) =>
+const styles = (
+  backgroundColor,
+  borderColor,
+  small,
+  inputValidation,
+  noBorder,
+) =>
   StyleSheet.create({
     container: {
       flexDirection: 'row',
@@ -51,7 +60,7 @@ const styles = (backgroundColor, borderColor, small, inputValidation) =>
         ? COLORS.UnclickableGray
         : COLORS.dibbleYellow,
       borderRadius: 2,
-      borderWidth: 1.5,
+      borderWidth: noBorder ? 0 : 1.5,
       borderColor:
         borderColor ?? backgroundColor === COLORS.black
           ? COLORS.red

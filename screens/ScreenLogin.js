@@ -13,10 +13,12 @@ import {
   Keyboard,
   ScrollView,
 } from 'react-native';
+import CustomButton from '../components/CustomButton/CustomButton';
+
 import DeviceInfo from 'react-native-device-info';
 import {
   key_user_info,
-  rq_login,
+  rq_send_sms_code,
   key_business_name,
 } from '../resource/BaseValue';
 import {DashboardScreenName} from '../src/constants/Routes';
@@ -36,23 +38,46 @@ const LoginScreen = props => {
   const navigation = useNavigation();
   const context = useContext(UserContext);
   const [indicatorDisplay, setIndicatorDisplay] = useState(false);
-  const [userName, setUserName] = useState('');
+  const [phoneNumber, setPhoneNumber] = useState('');
   const [password, setPassword] = useState('');
-  const [userNameFocused, setUserNameFocused] = useState(false);
+  const [showInputError, setShowInputError] = useState(false);
+  const [phoneNumberFocused, setPhoneNumberFocused] = useState(false);
   const [passwordFocused, setPasswordFocused] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [isShowErrorMessage, setIsShowErrorMessage] = useState(false);
+  const langObj = getLanguage();
+  const canContinue = inputtxt => {
+    if (inputtxt.startsWith('05') && inputtxt.length == 10) {
+      return true;
+    } else {
+      return false;
+    }
+  };
+  const validatePhone = inputTxt => {
+    if (inputTxt.length >= 2 && !inputTxt.startsWith('05')) {
+      return false;
+    }
+    return true;
+  };
 
-  const login = async () => {
-    if (userName === '' || password === '') {
+  const handlePhoneNumberChange = text => {
+    const onlyNumbers = text.replace(/\D/g, '');
+    setPhoneNumber(onlyNumbers);
+
+    if (!validatePhone(onlyNumbers)) {
+      setShowInputError(true);
+    } else {
+      setShowInputError(false);
+    }
+  };
+
+  const sendSmsCode = async () => {
+    if (phoneNumber === '' || password === '') {
       setIsShowErrorMessage(true);
     } else {
       let dataObj = {
-        request: rq_login,
-        email: userName,
-        password: password,
-        app_version: DeviceInfo.getVersion(),
-        os_type: Platform.OS === 'ios' ? 2 : Platform.OS === 'android' ? 1 : 0,
+        request: rq_send_sms_code,
+        phone_num: phoneNumber,
       };
 
       makeAPostRequest(
@@ -61,7 +86,7 @@ const LoginScreen = props => {
         () => setIndicatorDisplay(false),
         (isSuccess, responseJson) => {
           if (isSuccess) {
-            HandleLogin(responseJson);
+            _onSendOtpSuccess(responseJson);
           } else {
             setIsShowErrorMessage(true);
           }
@@ -82,26 +107,10 @@ const LoginScreen = props => {
     );
   }
 
-  const HandleLogin = responseJson => {
-    console.log('handle login');
-    // let {loggedIn, setLoggedIn, updateRevenu, setUpdateRevenu} = context;
-
-    // setLoggedIn(true);
-    // setUpdateRevenu(c => !c);
-    saveData(JSON.stringify(responseJson), key_user_info);
-    console.log('key_user_info');
-    saveData(
-      JSON.stringify({
-        first_name: responseJson.first_name,
-        last_name: responseJson.last_name,
-      }),
-      key_business_name,
-    );
-    console.log('setIsShowErrorMessage');
-    setIsShowErrorMessage(false);
-    console.log('navigation');
-    navigation.navigate(DashboardScreenName, {
-      refreshScreen: moment(new Date()).millisecond,
+  const _onSendOtpSuccess = () => {
+    navigation.navigate(SmsVerificationScreenName, {
+      userPhone: this.state.phoneNumber,
+      userCountryCode: this.state.countryPhoneCode,
     });
   };
 
@@ -119,63 +128,56 @@ const LoginScreen = props => {
                 resizeMode="contain"
                 style={styles.logo}
               />
-
               <View style={styles.inputContainer}>
-                <Text style={styles.sectionTitle}>התחברות למערכת</Text>
+                <Text style={styles.sectionTitle}>
+                  {' '}
+                  {langObj.registerOrLogin}
+                </Text>
                 <View
                   style={[
                     styles.fieldContainer,
-                    userNameFocused && styles.focusedFieldContainer,
+                    phoneNumberFocused && styles.focusedFieldContainer,
                   ]}>
-                  <Text style={styles.fieldName}>{langObj.userName}</Text>
+                  <Text style={styles.fieldName}>
+                    {langObj.yourPhoneNumber}
+                  </Text>
                   <View style={{flexDirection: 'row'}}>
                     <TextInput
-                      placeholder={langObj.userName}
-                      onFocus={() => setUserNameFocused(true)}
-                      onBlur={() => setUserNameFocused(false)}
+                      placeholder={langObj.enterYourMobileNumber}
+                      onFocus={() => setPhoneNumberFocused(true)}
+                      onBlur={() => setPhoneNumberFocused(false)}
                       style={styles.fieldText}
-                      value={userName}
+                      value={phoneNumber}
                       secureTextEntry={false}
-                      onChangeText={text => setUserName(text)}
+                      onChangeText={handlePhoneNumberChange}
+                      keyboardType={'number-pad'}
+                      maxLength={10}
                     />
                   </View>
                 </View>
-
-                <View
-                  style={[
-                    styles.fieldContainer,
-                    passwordFocused && styles.focusedFieldContainer,
-                  ]}>
-                  <Text style={styles.fieldName}>{langObj.password}</Text>
-                  <View style={{flexDirection: 'row'}}>
-                    <TextInput
-                      placeholder={langObj.password}
-                      onFocus={() => setPasswordFocused(true)}
-                      onBlur={() => setPasswordFocused(false)}
-                      style={styles.fieldText}
-                      value={password}
-                      secureTextEntry={!showPassword}
-                      onChangeText={text => setPassword(text)}
-                    />
-                    <TouchableOpacity
-                      onPress={() => {
-                        setShowPassword(!showPassword);
-                      }}
-                      style={styles.eyeIconContainer}>
-                      <Image
-                        source={require('../image/icon_eye.png')}
-                        resizeMode="contain"
-                        style={styles.eyeIcon}
-                      />
-                    </TouchableOpacity>
-                  </View>
-                </View>
+                {showInputError && (
+                  <Text style={styles.errorText}>
+                    {langObj.wrongPhoneNumber}
+                  </Text>
+                )}
               </View>
               <View>{showErrorMessage}</View>
 
-              <TouchableOpacity onPress={login} style={styles.loginButton}>
-                <Text style={styles.loginButtonText}>{langObj.login}</Text>
-              </TouchableOpacity>
+              <CustomButton
+                text={
+                  canContinue(phoneNumber)
+                    ? langObj.approve
+                    : langObj.putValidPhoneNumber
+                }
+                onPress={() => {
+                  if (canContinue(this.state.phoneNumber)) {
+                    sendSmsCode();
+                  }
+                }}
+                style={[!canContinue(phoneNumber) && {opacity: 0.2}]}
+                backgroundColor={canContinue(phoneNumber) ? null : 'black'}
+                noBorder={true}
+              />
             </View>
             {indicatorDisplay && (
               <View
@@ -198,7 +200,6 @@ const LoginScreen = props => {
   );
 };
 
-let langObj = getLanguage();
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -211,7 +212,8 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     alignItems: 'flex-start',
     justifyContent: 'center',
-    width: 600,
+    width: '100%', // Use percentage width to make it responsive
+    paddingHorizontal: 16, // Optional: Add padding to adjust inner spacing
   },
   sectionTitle: {
     ...FONTS.h2,
@@ -306,6 +308,11 @@ const styles = StyleSheet.create({
     ...FONTS.fontBold,
     color: COLORS.dibbleYellow,
     textDecorationLine: 'underline',
+  },
+  errorText: {
+    color: COLORS.errorRed,
+    ...FONTS.body2,
+    marginBottom: 5,
   },
 });
 
