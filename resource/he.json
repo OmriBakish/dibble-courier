@@ -4,6 +4,7 @@
   "yourPhoneNumber": "מספר הנייד שלך",
   "putValidPhoneNumber": "הזן מספר נייד תקין",
   "wrongPhoneNumber": "מספר הנייד אינו תקין",
+  "verificationCode": "קוד אימות",
 
   "clientSignature": "חתימת המקבל",
   "appName": "Dibble",

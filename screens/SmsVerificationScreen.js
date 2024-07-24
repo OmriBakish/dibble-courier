@@ -34,7 +34,7 @@ import moment from 'moment';
 import {COLORS, FONTS, SHADOWS, SIZES} from '../src/constants/theme';
 import {useNavigation} from '@react-navigation/native';
 
-const LoginScreen = props => {
+const SmsVerificationScreen = props => {
   const navigation = useNavigation();
   const context = useContext(UserContext);
   const [indicatorDisplay, setIndicatorDisplay] = useState(false);
@@ -79,7 +79,6 @@ const LoginScreen = props => {
         request: rq_send_sms_code,
         phone_num: phoneNumber,
       };
-      console.log(dataObj);
 
       makeAPostRequest(
         dataObj,
@@ -108,10 +107,12 @@ const LoginScreen = props => {
     );
   }
 
-  const _onSendOtpSuccess = responseJson => {
-    console.log(`______${JSON.stringify(responseJson)}________`);
+  const _onSendOtpSuccess = () => {
+    console.log(`______________`);
+
     navigation.navigate(SmsVerificationScreenName, {
-      userPhone: phoneNumber,
+      userPhone: this.state.phoneNumber,
+      userCountryCode: this.state.countryPhoneCode,
     });
   };
 
@@ -124,16 +125,12 @@ const LoginScreen = props => {
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
           <View style={styles.container}>
             <View style={styles.innerContainer}>
-              <Image
-                source={require('../image/login_logo.png')}
-                resizeMode="contain"
-                style={styles.logo}
-              />
               <View style={styles.inputContainer}>
                 <Text style={styles.sectionTitle}>
                   {' '}
-                  {langObj.registerOrLogin}
+                  {langObj.verificationCode}
                 </Text>
+
                 <View
                   style={[
                     styles.fieldContainer,
@@ -317,4 +314,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default LoginScreen;
+export default SmsVerificationScreen;

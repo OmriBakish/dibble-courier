@@ -19,11 +19,13 @@ import {
   SplashScreenName,
   DashboardScreenName,
   CheckInfoScreenName,
+  SmsVerificationScreenName,
 } from './src/constants/Routes';
 
 import {UserProvider, UserContext} from './resource/auth/UserContext';
 import {FONTS} from './src/constants/theme';
 import CustomDrawerContent from './components/CustomDrawer/CustomDrawer';
+import SmsVerificationScreen from './screens/SmsVerificationScreen';
 
 const Drawer = createDrawerNavigator();
 
@@ -62,6 +64,13 @@ const MainApp = React.memo(({setModalVisible}) => {
         <Drawer.Screen
           name={DashboardScreenName}
           component={DashBoardScreen}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <Drawer.Screen
+          name={SmsVerificationScreenName}
+          component={SmsVerificationScreen}
           options={{
             headerShown: false,
           }}
