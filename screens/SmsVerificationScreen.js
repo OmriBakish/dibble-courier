@@ -20,7 +20,10 @@ import {
   rq_send_sms_code,
   rq_get_app_version,
 } from '../resource/BaseValue';
-import {SmsVerificationScreenName} from '../src/constants/Routes';
+import {
+  SmsVerificationScreenName,
+  PhoneRegistrationScreenName,
+} from '../src/constants/Routes';
 import {makeAPostRequest, openIntercomChat} from '../resource/SupportFunction';
 import getLanguage from '../resource/LanguageSupport';
 import {COLORS, FONTS, SHADOWS, SIZES} from '../src/constants/theme';
@@ -114,6 +117,12 @@ const SmsVerificationScreen = props => {
   const _onVerifyOtpSuccess = responseJson => {
     if (responseJson.is_registered) {
       loginWithPhone(responseJson.auth_key);
+    } else {
+      console.log(`______________________`);
+      navigation.navigate(PhoneRegistrationScreenName, {
+        userPhone: phoneNumber,
+        authKey: responseJson.auth_key,
+      });
     }
   };
 
@@ -133,8 +142,6 @@ const SmsVerificationScreen = props => {
       (isSuccess, responseJson) => {
         if (isSuccess) {
           _onLoginWithPhoneSuccess(responseJson);
-        } else {
-          // _onRequestFailure(true);
         }
       },
     );

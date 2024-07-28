@@ -3364,6 +3364,7 @@ __metadata:
     react-native-circular-progress: ^1.4.0
     react-native-device-info: ^11.1.0
     react-native-dialog: ^9.3.0
+    react-native-fast-image: ^8.6.3
     react-native-gesture-handler: ^2.17.1
     react-native-image-progress: ^1.2.0
     react-native-intercom: ^21.1.1
@@ -8918,6 +8919,16 @@ __metadata:
   peerDependencies:
     react-native: ">=0.63.0"
   checksum: 148fcd9e4cb3001a8bbed02f465833329a83bc60efbf763a9bf227ec81208a41e03055e8bc213aea838933878f3cc7c3ca18a15446e819c17509cad75362d7ca
+  languageName: node
+  linkType: hard
+
+"react-native-fast-image@npm:^8.6.3":
+  version: 8.6.3
+  resolution: "react-native-fast-image@npm:8.6.3"
+  peerDependencies:
+    react: ^17 || ^18
+    react-native: ">=0.60.0"
+  checksum: 29289cb6b2eae0983c8922b22e2d9de3be07322bb7991c5def19f95eadefaedb0e308ff0b38cc1d0444e8bd4fe94a7621a99a2d3d9298100bcb60b3144677234
   languageName: node
   linkType: hard
 

@@ -5,6 +5,7 @@ export const OrdersHistoryName = 'OrdersHistoryName';
 export const SupportScreenName = 'SupportScreenName';
 export const TermsScreenName = 'TermsScreenName';
 export const SmsVerificationScreenName = 'SmsVerificationScreenName';
+export const PhoneRegistrationScreenName = 'PhoneRegistrationScreenName';
 
 export const CheckInfoScreenName = 'CheckInfoScreenName';
 export const ActiveOrdersScreenName = 'ActiveOrdersScreenName';

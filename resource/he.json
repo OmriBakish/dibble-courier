@@ -84,8 +84,12 @@
   "yourDetails": "הפרטים שלך",
   "allFieldMandatory": "כל השדות הם חובה",
   "firstName": "שם פרטי",
+  "firstNamePlaceHolder": "הכנס את שמך הפרטי",
   "lastName": "שם משפחה",
+  "lastNamePlaceHolder": "הכנס את שם המשפחה שלך",
+
   "yourEmail": "כתובת מייל",
+  "yourEmailPlaceHolder": "הזן כתובת מייל תקינה",
   "emailNeedReason": "כדי לשלוח לך קבלות אנחנו צריכים את המייל שלך",
   "country": "מדינה",
   "yourPhoneNumber": "מספר הנייד שלך",
