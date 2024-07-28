@@ -1,8 +1,7 @@
-import React, {useState, useContext} from 'react';
+import React, {useState, useRef, useEffect} from 'react';
 import {
   View,
   Text,
-  Image,
   TextInput,
   StyleSheet,
   TouchableOpacity,
@@ -12,81 +11,83 @@ import {
   TouchableWithoutFeedback,
   Keyboard,
   ScrollView,
+  Dimensions,
 } from 'react-native';
-import CustomButton from '../components/CustomButton/CustomButton';
-
-import DeviceInfo from 'react-native-device-info';
+import Intercom from 'react-native-intercom';
 import {
-  key_user_info,
+  rq_verify_sms_code,
+  rq_login_with_phone,
   rq_send_sms_code,
-  key_business_name,
+  rq_get_app_version,
 } from '../resource/BaseValue';
 import {SmsVerificationScreenName} from '../src/constants/Routes';
-
-import {
-  makeAPostRequest,
-  saveData,
-  openIntercomChat,
-} from '../resource/SupportFunction';
+import {makeAPostRequest, openIntercomChat} from '../resource/SupportFunction';
 import getLanguage from '../resource/LanguageSupport';
-import {UserContext} from '../resource/auth/UserContext';
-import moment from 'moment';
 import {COLORS, FONTS, SHADOWS, SIZES} from '../src/constants/theme';
 import {useNavigation} from '@react-navigation/native';
+import SectionTitle from '../components/SectionTitle/SectionTitle';
+import DeviceInfo from 'react-native-device-info';
+import AsyncStorage from '@react-native-community/async-storage';
+import {save} from '../src/services/utils/storage';
+import {AuthenticateStore} from '../src/services/store/store/authenticate.store';
+import moment from 'moment';
+
+const screenWidth = Math.round(Dimensions.get('window').width);
 
 const SmsVerificationScreen = props => {
   const navigation = useNavigation();
-  const context = useContext(UserContext);
   const [indicatorDisplay, setIndicatorDisplay] = useState(false);
   const [phoneNumber, setPhoneNumber] = useState('');
-  const [password, setPassword] = useState('');
   const [showInputError, setShowInputError] = useState(false);
-  const [phoneNumberFocused, setPhoneNumberFocused] = useState(false);
-  const [passwordFocused, setPasswordFocused] = useState(false);
-  const [showPassword, setShowPassword] = useState(false);
   const [isShowErrorMessage, setIsShowErrorMessage] = useState(false);
+  const [appVersion, setAppVersion] = useState({});
+  const [code1, setCode1] = useState('');
+  const [code2, setCode2] = useState('');
+  const [code3, setCode3] = useState('');
+  const [code4, setCode4] = useState('');
+  const [code5, setCode5] = useState('');
+  const [countDownTime, setCountDownTime] = useState(0);
+  const [isMaxSmsSent, setIsMaxSmsSent] = useState(false);
+
+  const code1Ref = useRef(null);
+  const code2Ref = useRef(null);
+  const code3Ref = useRef(null);
+  const code4Ref = useRef(null);
+  const code5Ref = useRef(null);
   const langObj = getLanguage();
-  const canContinue = inputtxt => {
-    if (inputtxt.startsWith('05') && inputtxt.length == 10) {
-      return true;
-    } else {
-      return false;
-    }
-  };
-  const validatePhone = inputTxt => {
-    if (inputTxt.length >= 2 && !inputTxt.startsWith('05')) {
-      return false;
-    }
-    return true;
-  };
 
-  const handlePhoneNumberChange = text => {
-    const onlyNumbers = text.replace(/\D/g, '');
-    setPhoneNumber(onlyNumbers);
-
-    if (!validatePhone(onlyNumbers)) {
-      setShowInputError(true);
-    } else {
-      setShowInputError(false);
+  useEffect(() => {
+    if (props.route != null && props.route.params != null) {
+      setPhoneNumber(props.route.params.userPhone);
     }
-  };
+    code1Ref.current.focus();
+  }, [props]);
 
-  const sendSmsCode = async () => {
-    if (phoneNumber === '') {
-      setIsShowErrorMessage(true);
-    } else {
+  useEffect(() => {
+    getAppVersion();
+  }, []);
+
+  useEffect(() => {
+    if (code1 && code2 && code3 && code4 && code5) {
+      verifyCode();
+    }
+  }, [code1, code2, code3, code4, code5]);
+
+  const verifyCode = async () => {
+    if (code1 && code2 && code3 && code4 && code5) {
+      const verificationCode = code1 + code2 + code3 + code4 + code5;
       let dataObj = {
-        request: rq_send_sms_code,
         phone_num: phoneNumber,
+        verification_code: verificationCode,
       };
-
       makeAPostRequest(
+        rq_verify_sms_code,
         dataObj,
         () => setIndicatorDisplay(true),
         () => setIndicatorDisplay(false),
         (isSuccess, responseJson) => {
           if (isSuccess) {
-            _onSendOtpSuccess(responseJson);
+            _onVerifyOtpSuccess(responseJson);
           } else {
             setIsShowErrorMessage(true);
           }
@@ -94,26 +95,182 @@ const SmsVerificationScreen = props => {
       );
     }
   };
-
-  let showErrorMessage = [];
-  if (isShowErrorMessage) {
-    showErrorMessage = (
-      <View style={styles.errorMessageContainer}>
-        <Text style={styles.errorMessageText}>{langObj.loginError}</Text>
-        <TouchableOpacity onPress={openIntercomChat}>
-          <Text style={styles.supportText}>{langObj.support}</Text>
-        </TouchableOpacity>
-      </View>
+  const getAppVersion = () => {
+    makeAPostRequest(
+      rq_get_app_version,
+      null,
+      () => setIndicatorDisplay(true),
+      () => setIndicatorDisplay(false),
+      (success, responseJson) => {
+        if (success) {
+          _onGetAppVersionSuccess(responseJson);
+        }
+      },
     );
-  }
+  };
+  const _onGetAppVersionSuccess = responseJson => {
+    setAppVersion(responseJson.apps[5]);
+  };
+  const _onVerifyOtpSuccess = responseJson => {
+    if (responseJson.is_registered) {
+      loginWithPhone(responseJson.auth_key);
+    }
+  };
 
-  const _onSendOtpSuccess = () => {
-    console.log(`______________`);
+  const loginWithPhone = async authKey => {
+    // console.log(DeviceInfo.getVersion());
+    const dataObj = {
+      auth_key: authKey,
+      app_version: appVersion.last_version,
+      os_type: Platform.OS === 'ios' ? 6 : Platform.OS === 'android' ? 5 : 0,
+    };
 
-    navigation.navigate(SmsVerificationScreenName, {
-      userPhone: this.state.phoneNumber,
-      userCountryCode: this.state.countryPhoneCode,
+    makeAPostRequest(
+      rq_login_with_phone,
+      dataObj,
+      () => setIndicatorDisplay(true),
+      () => setIndicatorDisplay(false),
+      (isSuccess, responseJson) => {
+        if (isSuccess) {
+          _onLoginWithPhoneSuccess(responseJson);
+        } else {
+          // _onRequestFailure(true);
+        }
+      },
+    );
+  };
+
+  const _onLoginWithPhoneSuccess = responseData => {
+    if (responseData.type == 4) {
+      setPhoneNumber(responseData.phone_number);
+      saveUserInfo(responseData);
+      AuthenticateStore.createAuth(responseData);
+      save('token', {
+        token: responseData.token,
+        first_name: responseData.first_name,
+        last_name: responseData.last_name,
+        email: responseData.email,
+        phone_number: phoneNumber,
+        expired: moment().unix(),
+      });
+      registerIntercom();
+      navigation.reset({
+        index: 0,
+        routes: [{name: SmsVerificationScreenName}],
+      });
+    }
+  };
+
+  const registerIntercom = () => {
+    Intercom.loginUserWithUserAttributes({
+      userId: phoneNumber,
+      email: '',
+    }).then(() => {
+      let phone = '';
+      if (phoneNumber != null) {
+        phone = phoneNumber;
+      }
+      Intercom.updateUser({
+        name:
+          AuthenticateStore.authentication.first_name +
+          ' ' +
+          AuthenticateStore.authentication.last_name,
+        phone: phone,
+        custom_attributes: {
+          user_type: 'courier',
+        },
+      });
     });
+  };
+
+  const saveUserInfo = async dataJson => {
+    Keyboard.dismiss();
+    try {
+      let userInfo = {
+        type: dataJson.type,
+        firstName: dataJson.first_name,
+        lastName: dataJson.last_name,
+        phoneNumber: phoneNumber,
+      };
+      AsyncStorage.setItem('key_user_info', JSON.stringify(userInfo));
+    } catch (e) {
+      alert(e);
+    }
+  };
+
+  const handleInputChange = (text, setCode, nextRef, prevRef) => {
+    setCode(text);
+    if (text) {
+      if (nextRef.current) {
+        nextRef.current.focus();
+      }
+    } else {
+      if (prevRef.current) {
+        prevRef.current.focus();
+      }
+    }
+  };
+
+  const handleKeyPress = (e, prevRef) => {
+    if (e.nativeEvent.key === 'Backspace' && prevRef.current) {
+      prevRef.current.focus();
+    }
+  };
+  const sendSmsCodeAgain = async () => {
+    let sendTime = await AsyncStorage.getItem('key_resend_password_time');
+    if (sendTime != null && sendTime != '' && parseInt(sendTime) > 4) {
+      setIsMaxSmsSent(true);
+    } else {
+      if (countDownTime <= 0) {
+        let dataObj = {
+          phone_num: phoneNumber,
+        };
+        console.log(dataObj);
+
+        makeAPostRequest(
+          rq_send_sms_code,
+          dataObj,
+          () => setIndicatorDisplay(true),
+          () => setIndicatorDisplay(false),
+          (isSuccess, responseJson) => {
+            if (isSuccess) {
+              _onSendOtpSuccess(responseJson);
+            } else {
+              setIsShowErrorMessage(true);
+            }
+          },
+        );
+      }
+    }
+  };
+  const _onSendOtpSuccess = responseData => {
+    setIndicatorDisplay(false);
+    setCode1('');
+    setCode2('');
+    setCode3('');
+    setCode4('');
+    setCode5('');
+    saveResendCodeCount();
+    code1Ref.current.focus();
+    countDown();
+  };
+  const saveResendCodeCount = async () => {
+    let sendTime = await AsyncStorage.getItem('key_resend_password_time');
+    if (sendTime != null && sendTime != '') {
+      AsyncStorage.setItem(
+        'key_resend_password_time',
+        parseInt(sendTime) + 1 + '',
+      );
+    } else {
+      AsyncStorage.setItem('key_resend_password_time', '1');
+    }
+  };
+  const countDown = () => {
+    if (countDownTime > 0) {
+      setTimeout(() => {
+        setCountDownTime(countDownTime - 1);
+      }, 1000);
+    }
   };
 
   return (
@@ -126,57 +283,102 @@ const SmsVerificationScreen = props => {
           <View style={styles.container}>
             <View style={styles.innerContainer}>
               <View style={styles.inputContainer}>
-                <Text style={styles.sectionTitle}>
-                  {' '}
-                  {langObj.verificationCode}
+                <SectionTitle title={langObj.verificationCode} center={true} />
+                <Text style={[styles.textDescription, {alignSelf: 'center'}]}>
+                  {langObj.codeHaveBeenSentTo + ' ' + phoneNumber}
                 </Text>
-
-                <View
-                  style={[
-                    styles.fieldContainer,
-                    phoneNumberFocused && styles.focusedFieldContainer,
-                  ]}>
-                  <Text style={styles.fieldName}>
-                    {langObj.yourPhoneNumber}
-                  </Text>
-                  <View style={{flexDirection: 'row'}}>
-                    <TextInput
-                      placeholder={langObj.enterYourMobileNumber}
-                      onFocus={() => setPhoneNumberFocused(true)}
-                      onBlur={() => setPhoneNumberFocused(false)}
-                      style={styles.fieldText}
-                      value={phoneNumber}
-                      secureTextEntry={false}
-                      onChangeText={handlePhoneNumberChange}
-                      keyboardType={'number-pad'}
-                      maxLength={10}
-                    />
-                  </View>
+                <View style={styles.codeInputContainer}>
+                  <TextInput
+                    ref={code1Ref}
+                    style={styles.codeInput}
+                    keyboardType="number-pad"
+                    maxLength={1}
+                    onChangeText={text =>
+                      handleInputChange(text, setCode1, code2Ref, code1Ref)
+                    }
+                    onKeyPress={e => handleKeyPress(e, code1Ref)}
+                    value={code1}
+                  />
+                  <TextInput
+                    ref={code2Ref}
+                    style={styles.codeInput}
+                    keyboardType="number-pad"
+                    maxLength={1}
+                    onChangeText={text =>
+                      handleInputChange(text, setCode2, code3Ref, code1Ref)
+                    }
+                    onKeyPress={e => handleKeyPress(e, code1Ref)}
+                    value={code2}
+                  />
+                  <TextInput
+                    ref={code3Ref}
+                    style={styles.codeInput}
+                    keyboardType="number-pad"
+                    maxLength={1}
+                    onChangeText={text =>
+                      handleInputChange(text, setCode3, code4Ref, code2Ref)
+                    }
+                    onKeyPress={e => handleKeyPress(e, code2Ref)}
+                    value={code3}
+                  />
+                  <TextInput
+                    ref={code4Ref}
+                    style={styles.codeInput}
+                    keyboardType="number-pad"
+                    maxLength={1}
+                    onChangeText={text =>
+                      handleInputChange(text, setCode4, code5Ref, code3Ref)
+                    }
+                    onKeyPress={e => handleKeyPress(e, code3Ref)}
+                    value={code4}
+                  />
+                  <TextInput
+                    ref={code5Ref}
+                    style={styles.codeInput}
+                    keyboardType="number-pad"
+                    maxLength={1}
+                    onChangeText={text => {
+                      handleInputChange(text, setCode5, code5Ref, code4Ref);
+                    }}
+                    onKeyPress={e => handleKeyPress(e, code4Ref)}
+                    value={code5}
+                  />
                 </View>
                 {showInputError && (
                   <Text style={styles.errorText}>
                     {langObj.wrongPhoneNumber}
                   </Text>
                 )}
+                <View style={styles.resend_sms_wrapper}>
+                  <Text style={[styles.textBasicStyle, styles.textDescription]}>
+                    {langObj.codeNotArrived}
+                  </Text>
+                  <TouchableOpacity
+                    onPress={() => {
+                      isMaxSmsSent ? openIntercomChat() : sendSmsCodeAgain();
+                    }}
+                    style={{
+                      marginStart: 5,
+                      borderBottomWidth: 1,
+                      borderBottomColor: '#000000',
+                    }}>
+                    <Text
+                      style={[
+                        styles.textBasicStyle,
+                        styles.textDescription,
+                        {fontWeight: 'bold'},
+                      ]}>
+                      {isMaxSmsSent
+                        ? langObj.goToSupport
+                        : countDownTime == 0
+                        ? langObj.sendAgain
+                        : countDownTime + ' ' + langObj.seconds}
+                    </Text>
+                  </TouchableOpacity>
+                </View>
               </View>
-              <View>{showErrorMessage}</View>
-
-              <CustomButton
-                text={
-                  canContinue(phoneNumber)
-                    ? langObj.approve
-                    : langObj.putValidPhoneNumber
-                }
-                onPress={() => {
-                  if (canContinue(phoneNumber)) {
-                    sendSmsCode();
-                  }
-                }}
-                style={[!canContinue(phoneNumber) && {opacity: 0.2}]}
-                backgroundColor={canContinue(phoneNumber) ? null : 'black'}
-                noBorder={true}
-              />
             </View>
+
             {indicatorDisplay && (
               <View
                 style={[
@@ -199,6 +401,18 @@ const SmsVerificationScreen = props => {
 };
 
 const styles = StyleSheet.create({
+  textBasicStyle: {
+    fontFamily: 'AlmoniDLAAA',
+  },
+  resend_sms_wrapper: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+  },
+  textDescription: {
+    ...FONTS.body1,
+    fontSize: 20,
+    marginBottom: 5,
+  },
   container: {
     flex: 1,
     flexDirection: 'column',
@@ -210,8 +424,8 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     alignItems: 'flex-start',
     justifyContent: 'center',
-    width: '100%', // Use percentage width to make it responsive
-    paddingHorizontal: 16, // Optional: Add padding to adjust inner spacing
+    width: '100%',
+    paddingHorizontal: 16,
   },
   sectionTitle: {
     ...FONTS.h2,
@@ -230,6 +444,31 @@ const styles = StyleSheet.create({
     borderRadius: SIZES.radius,
     ...SHADOWS.cardsAndButtons,
     gap: SIZES.space16,
+    width: '100%',
+  },
+  codeInputContainer: {
+    flexDirection: 'row-reverse',
+    justifyContent: 'center',
+    marginVertical: 20,
+  },
+  codeInput: {
+    fontSize: 24,
+    textAlign: 'center',
+    color: COLORS.black,
+    borderRadius: 15,
+    backgroundColor: COLORS.white,
+    width: screenWidth * (1 / 7),
+    height: screenWidth * (5 / 28),
+    marginHorizontal: 5,
+    shadowColor: '#000',
+    fontFamily: 'OscarFM-Regular',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5,
   },
   fieldContainer: {
     width: '100%',

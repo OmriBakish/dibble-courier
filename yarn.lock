@@ -3354,8 +3354,10 @@ __metadata:
     eslint: ^8.19.0
     jest: ^29.6.3
     lottie-react-native: ^6.7.2
+    mobx: ^6.13.1
     moment: ^2.30.1
     prettier: 2.8.8
+    ramda: ^0.30.1
     react: 18.2.0
     react-native: 0.74.3
     react-native-calendar-picker: ^8.0.4
@@ -3366,6 +3368,7 @@ __metadata:
     react-native-image-progress: ^1.2.0
     react-native-intercom: ^21.1.1
     react-native-keep-awake: ^4.0.0
+    react-native-keychain: ^8.2.0
     react-native-linear-gradient: ^2.8.3
     react-native-localize: ^3.2.0
     react-native-modal: ^13.0.1
@@ -7988,6 +7991,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"mobx@npm:^6.13.1":
+  version: 6.13.1
+  resolution: "mobx@npm:6.13.1"
+  checksum: 59d1f36c82e1f822e5d462a960dba28f1c4d7c5b8123fa48423b5d1bf70b00affa39922e914d473b5505016379f2ce27ba76893044276a0e909c401553de29eb
+  languageName: node
+  linkType: hard
+
 "moment@npm:^2.30.1":
   version: 2.30.1
   resolution: "moment@npm:2.30.1"
@@ -8795,6 +8805,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"ramda@npm:^0.30.1":
+  version: 0.30.1
+  resolution: "ramda@npm:0.30.1"
+  checksum: ce6f4b6b967a84a4e65c01ab1b1cdd73d46b8efe71aeccf5d1443c56c4e31a0ea82ece7df6510453dd3d83b92cabf8a6b4d50d189a1b35c08a6f44b281bebf79
+  languageName: node
+  linkType: hard
+
 "range-parser@npm:~1.2.1":
   version: 1.2.1
   resolution: "range-parser@npm:1.2.1"
@@ -8939,6 +8956,13 @@ __metadata:
   version: 4.0.0
   resolution: "react-native-keep-awake@npm:4.0.0"
   checksum: b041c5c7c27e2ed7d97aafbea7e05b2676dd1ae712df6de4bb6076946d4ae76e65aa2e666748bfacc8959667ae9704787466d17d348cf79bb0b8c1b327c6a110
+  languageName: node
+  linkType: hard
+
+"react-native-keychain@npm:^8.2.0":
+  version: 8.2.0
+  resolution: "react-native-keychain@npm:8.2.0"
+  checksum: 4c4d5331013b8ab17c21120a2388e1e82aa30586738c0a34ed9dcffb6ce12454125ddb690951cad5563c9290b060eb68ccffa9477650cc3a5ddc347696b5d4ef
   languageName: node
   linkType: hard
 

@@ -134,26 +134,53 @@ export async function fetchOrdersWithFilter(
     },
   );
 }
-export function makeAPostRequest(
-  requestObject,
+
+export async function makeAPostRequest(
+  apiName,
+  requestBody,
+  showLoadingBarFunction,
+  closeLoadingBarFunction,
+  callback,
+) {
+  makeAPIRequest(
+    'POST',
+    apiName,
+    requestBody,
+    showLoadingBarFunction,
+    closeLoadingBarFunction,
+    callback,
+  );
+}
+
+export async function makeAPIRequest(
+  method,
+  path,
+  requestBody,
   showLoadingBarFunction,
   closeLoadingBarFunction,
   callback,
 ) {
   showLoadingBarFunction();
-  fetch(apiUrl[global.environment], {
-    method: 'POST',
-    headers: {
-      Accept: 'application/json',
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(requestObject),
+  let headers = {
+    Accept: 'application/json',
+    'Content-Type': 'application/json',
+  };
+  let token = await AsyncStorage.getItem(key_user_info);
+  if (token != null) {
+    token = JSON.parse(token).token;
+    headers['Authorization'] = `Bearer ${token}`;
+  }
+  fetch(apiUrl[global.environment] + path, {
+    method: method,
+    headers: headers,
+    body: requestBody ? JSON.stringify(requestBody) : null,
   })
     .then(response => response.json())
     .then(responseJson => {
       console.log(JSON.stringify(responseJson));
       closeLoadingBarFunction();
-      if (responseJson.rc == rc_success) {
+
+      if (responseJson.rc == rc_success || responseJson['rc'] == 0) {
         callback(true, responseJson);
       } else {
         callback(false, responseJson);

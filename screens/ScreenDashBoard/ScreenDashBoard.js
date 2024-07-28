@@ -604,7 +604,6 @@ class DashBoardScreen extends React.Component {
     getDataWithSubKey(key_user_info, sub_key_token, token => {
       let requestObj = {
         request: rq_update_device_info,
-        token: token,
         device_id: fcmToken,
       };
       makeAPostRequest(
@@ -739,12 +738,10 @@ class DashBoardScreen extends React.Component {
   loadActiveOrderRequestOnly = async () => {
     this.setState({isOrderLoading: true});
     getDataWithSubKey(key_user_info, sub_key_token, token => {
-      let dataObj = {
-        request: rq_get_active_order_requests,
-        token: token,
-      };
+      let dataObj = {};
       console.log(dataObj);
       makeAPostRequest(
+        rq_get_active_order_requests,
         dataObj,
         () => {
           //this._showLoadingBox();

@@ -13,10 +13,10 @@ export let order_type = {
   3: 'משלוח מתוזמן',
 };
 export const apiUrl = {
-  Development: 'https://test.dibble.co.il/backend/api/index.php',
-  Test: 'https://test.dibble.co.il/backend/api/index.php',
-  QA: 'https://qa.dibble.co.il/backend/api/index.php',
-  Production: 'https://api.dibble.co.il/backend/api/index.php',
+  Development: 'https://test.dibble.co.il/backend/api/',
+  Test: 'https://test.dibble.co.il/backend/api/',
+  QA: 'https://qa.dibble.co.il/backend/api/',
+  Production: 'https://api.dibble.co.il/backend/api/',
 };
 
 export const rc_success = '0';
@@ -25,9 +25,10 @@ export const rq_login = 'login';
 export const rq_logout = 'logout';
 export const rq_set_order_delivered = 'set_order_delivered';
 export const rq_verify_sms_code = 'verify_sms_code';
-export const rq_send_sms_code = 'send_sms_code';
-export const rq_register_courier_with_phone = 'register_courier_with_phone';
 export const rq_login_with_phone = 'login_with_phone';
+export const rq_send_sms_code = 'send_sms_code';
+export const rq_get_app_version = 'get_app_version';
+export const rq_register_courier_with_phone = 'register_courier_with_phone';
 export const rq_courier_am_i_approved = 'courier_am_i_approved';
 export const rq_get_active_order_requests = 'get_active_order_requests';
 export const rq_send_invoice = 'get_supplier_orders_summary';

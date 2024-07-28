@@ -14,23 +14,12 @@ import {
   ScrollView,
 } from 'react-native';
 import CustomButton from '../components/CustomButton/CustomButton';
-
 import DeviceInfo from 'react-native-device-info';
-import {
-  key_user_info,
-  rq_send_sms_code,
-  key_business_name,
-} from '../resource/BaseValue';
+import {rq_send_sms_code} from '../resource/BaseValue';
 import {SmsVerificationScreenName} from '../src/constants/Routes';
-
-import {
-  makeAPostRequest,
-  saveData,
-  openIntercomChat,
-} from '../resource/SupportFunction';
+import {makeAPostRequest, openIntercomChat} from '../resource/SupportFunction';
 import getLanguage from '../resource/LanguageSupport';
 import {UserContext} from '../resource/auth/UserContext';
-import moment from 'moment';
 import {COLORS, FONTS, SHADOWS, SIZES} from '../src/constants/theme';
 import {useNavigation} from '@react-navigation/native';
 
@@ -39,11 +28,8 @@ const LoginScreen = props => {
   const context = useContext(UserContext);
   const [indicatorDisplay, setIndicatorDisplay] = useState(false);
   const [phoneNumber, setPhoneNumber] = useState('');
-  const [password, setPassword] = useState('');
   const [showInputError, setShowInputError] = useState(false);
   const [phoneNumberFocused, setPhoneNumberFocused] = useState(false);
-  const [passwordFocused, setPasswordFocused] = useState(false);
-  const [showPassword, setShowPassword] = useState(false);
   const [isShowErrorMessage, setIsShowErrorMessage] = useState(false);
   const langObj = getLanguage();
   const canContinue = inputtxt => {
@@ -76,12 +62,12 @@ const LoginScreen = props => {
       setIsShowErrorMessage(true);
     } else {
       let dataObj = {
-        request: rq_send_sms_code,
         phone_num: phoneNumber,
       };
       console.log(dataObj);
 
       makeAPostRequest(
+        rq_send_sms_code,
         dataObj,
         () => setIndicatorDisplay(true),
         () => setIndicatorDisplay(false),
@@ -109,7 +95,6 @@ const LoginScreen = props => {
   }
 
   const _onSendOtpSuccess = responseJson => {
-    console.log(`______${JSON.stringify(responseJson)}________`);
     navigation.navigate(SmsVerificationScreenName, {
       userPhone: phoneNumber,
     });
